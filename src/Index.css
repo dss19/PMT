@@ -1,0 +1,58 @@
+:root {
+    --orange: #F18223;
+    /*--line: rgba(241, 130, 35, 0.3);*/
+    --line: rgba(0, 85, 141, 0.15);
+    --main: #00558D;
+}
+
+@font-face {
+    font-family: "Noah";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(./assets/fonts/Noah-ExtraBold.woff2) format("woff2"), url(./assets/fonts/Noah-ExtraBold.woff) format("woff"), url(./assets/fonts/Noah-ExtraBold.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Noah";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(./assets/fonts/Noah-Bold.woff2) format("woff2"), url(./assets/fonts/Noah-Bold.woff) format("woff"), url(./assets/fonts/Noah-Bold.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Noah";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(./assets/fonts/Noah-Medium.woff2) format("woff2"), url(./assets/fonts/Noah-Medium.woff) format("woff"), url(./assets/fonts/Noah-Medium.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Noah";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./assets/fonts/Noah-Regular.woff2) format("woff2"), url(./assets/fonts/Noah-Regular.woff) format("woff"), url(./assets/fonts/Noah-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Noah";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(./assets/fonts/Noah-Light.woff2) format("woff2"), url(./assets/fonts/Noah-Light.woff) format("woff"), url(./assets/fonts/Noah-Light.ttf) format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+}
+html, body {
+    font-family: "Noah", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+img {
+    display: inline-block;
+    max-width: 100%;
+}
