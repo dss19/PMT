@@ -1,0 +1,27 @@
+.header-nav {
+    height: 74px;
+}
+.header-nav-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid var(--line);
+}
+.header-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-nav-link {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--main);
+    transition: 0.25s;
+}
+
+@media screen and (min-width: 993px) {
+    .header-nav-link:hover {
+        color: var(--orange);
+    }
+}
