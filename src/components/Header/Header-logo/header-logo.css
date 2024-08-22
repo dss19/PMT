@@ -1,0 +1,13 @@
+.header-logo {
+    width: 360px;
+    min-width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    border-right: 1px solid #F18223;
+}
+.header-logo img {
+    max-width: 45%;
+    width: 45%;
+}
