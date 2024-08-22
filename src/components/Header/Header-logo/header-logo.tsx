@@ -4,9 +4,9 @@ import logo from '../../../assets/images/logo.png';
 
 const HeaderLogo: React.FC = () => {
     return (
-        <div className="header-logo">
+        <a href="/" className="header-logo">
             <img src={logo} alt="logo"/>
-        </div>
+        </a>
     );
 };
 
