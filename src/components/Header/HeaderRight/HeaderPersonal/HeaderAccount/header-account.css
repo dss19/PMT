@@ -1,0 +1,40 @@
+.header-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.header-account::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main);
+    transition: .25s ease-in-out;
+    z-index: 2;
+    transform: translateX(-101%);
+}
+
+.header-account-icon {
+    height: 30px;
+    width: 30px;
+    stroke: #000000;    
+    transition: .25s ease-in-out;
+    z-index: 3;
+}
+
+@media screen and (min-width: 993px) {
+    .header-account:hover::before {
+        transform: translateX(0);    
+    }    
+    .header-account:hover .header-account-icon {
+        stroke: #ffffff;
+    }
+}

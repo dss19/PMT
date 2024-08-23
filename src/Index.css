@@ -44,7 +44,8 @@
 * {
     box-sizing: border-box;
 }
-html, body {
+body {
+    position: relative;
     font-family: "Noah", sans-serif;
 }
 
@@ -52,7 +53,11 @@ a {
     text-decoration: none;
     display: inline-block;
 }
-img {
+img, svg {
     display: inline-block;
     max-width: 100%;
+}
+
+.d-none {
+    display: none!important;
 }
