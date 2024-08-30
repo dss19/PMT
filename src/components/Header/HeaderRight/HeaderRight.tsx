@@ -1,12 +1,12 @@
 import React from 'react';
 import HeaderPersonal from "./HeaderPersonal/HeaderPersonal";
-import HeaderContacts from "./HeaderContacts/HeaderContacts";
+import ContactsList from "../../ContactsList/ContactsList";
 import './header-right.css';
 
 const HeaderRight: React.FC = () => {
     return (
         <div className="header-right">
-            <HeaderContacts/>
+            <ContactsList/>
             <HeaderPersonal/>
         </div>
     );

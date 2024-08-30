@@ -55,3 +55,17 @@
         color: #ffffff;
     }    
 }
+
+@media screen and (max-width: 768px) {
+    .header-catalog {
+        flex-direction: column;        
+        width: 66px;
+        min-width: 66px;
+    }
+    .header-catalog-link {
+        font-size: 14px;
+    } 
+    .header-catalog-icon {
+        margin: 0 0 4px;
+    }
+}

@@ -1,6 +1,18 @@
 .header{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
+    background: #ffffff;
+    z-index: 100;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }  
 }

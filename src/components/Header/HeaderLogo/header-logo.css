@@ -11,3 +11,34 @@
     max-width: 45%;
     width: 45%;
 }
+
+@media screen and (max-width: 1400px) {
+    .header-logo {
+        width: 200px;
+        min-width: 200px;
+    }    
+}
+
+@media screen and (max-width: 992px) {
+    .header-logo {
+        width: 120px;
+        min-width: 120px;
+        padding: 10px 0;
+    }  
+    .header-logo img {
+        width: 70px;
+        max-width: 70px;
+    }  
+}
+
+@media screen and (max-width: 768px) {
+    .header-logo {
+        width: 100px;
+        min-width: 100px;
+        padding: 10px 0;
+    }  
+    .header-logo img {
+        width: 70px;
+        max-width: 70px;
+    }  
+}

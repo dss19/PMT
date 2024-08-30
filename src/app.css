@@ -1,0 +1,21 @@
+.main {
+    padding-top: 150px;
+}
+
+@media screen and (max-width: 1400px) {
+    .main {
+        padding-top: 100px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .main {
+        padding-top: 68px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        padding-top: 132px;
+    }
+}

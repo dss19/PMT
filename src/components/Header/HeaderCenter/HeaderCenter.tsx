@@ -1,12 +1,12 @@
 import React from 'react';
 import './header-center.css';
-import HeaderNav from "./HeaderNav/HeaderNav";
+import Navigation from "../../Navigation/Navigation";
 import HeaderProducts from './HeaderProducts/HeaderProducts';
 
 const HeaderCenter: React.FC = () => {
     return (
         <div className="header-center">
-            <HeaderNav/>
+            <Navigation />
             <HeaderProducts/>
         </div>
     );

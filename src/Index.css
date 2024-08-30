@@ -1,6 +1,5 @@
 :root {
     --orange: #F18223;
-    /*--line: rgba(241, 130, 35, 0.3);*/
     --line: rgba(0, 85, 141, 0.15);
     --main: #00558D;
 }
@@ -43,10 +42,15 @@
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 body {
     position: relative;
     font-family: "Noah", sans-serif;
+}
+
+html, body {
+    overflow-x: hidden;
 }
 
 a {
@@ -54,7 +58,7 @@ a {
     display: inline-block;
 }
 img, svg {
-    display: inline-block;
+    display: block;
     max-width: 100%;
 }
 

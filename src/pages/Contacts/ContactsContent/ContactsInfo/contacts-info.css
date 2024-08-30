@@ -1,0 +1,54 @@
+.contacts-ttl {
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.contacts-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.contacts-block:last-of-type {
+    margin-bottom: 0;
+}
+
+.contacts-block-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    fill: var(--main);
+}
+
+.contacts-text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #000000;
+}
+
+@media screen and (max-width: 992px) {
+    .contacts-text {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .contacts-ttl {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .contacts-block {
+        margin-bottom: 16px; 
+    }
+    .contacts-block-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+    }
+    .contacts-text {
+        font-size: 18px;
+    }
+}

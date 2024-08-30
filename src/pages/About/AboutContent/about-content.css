@@ -1,0 +1,30 @@
+.about-content {
+    padding: 50px 0;
+}
+
+.about-text {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.about-text:last-of-type {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 992px) {
+    .about-content {
+        padding: 40px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-content {
+        padding: 30px 0;
+    } 
+
+    .about-text {
+        font-size: 20px;
+    }
+}
