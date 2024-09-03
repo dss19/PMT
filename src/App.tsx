@@ -9,6 +9,7 @@ const About = lazy(() => import('./pages/About/About'));
 const Payment = lazy(() => import('./pages/Payment/Payment'));
 const News = lazy(() => import('./pages/News/News'));
 const Contacts = lazy(() => import('./pages/Contacts/Contacts'));
+const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/news" element={<News />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/catalog" element={<Catalog />} />
         </Routes>
         <Footer />
       </Suspense>
