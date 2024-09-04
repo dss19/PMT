@@ -1,0 +1,74 @@
+[
+  {
+    "id": "f6e7b6dd-375b-4ab7-99a3-46349cdec7ed",
+    "name": "Электроника",
+    "subCategories": [
+      {
+        "id": "36cac61c-585d-48d0-8ef6-3c572c215a3b",
+        "name": "Смартфоны",
+        "products": [
+          {
+            "id": "08b00921-0118-472a-912e-7cb99719a8b3",
+            "name": "iPhone 13",
+            "description": "Смартфон от Apple",
+            "price": 799
+          },
+          {
+            "id": "d6f9be7f-7982-4918-9bb8-07ab97068fba",
+            "name": "Samsung Galaxy S21",
+            "description": "Смартфон от Samsung",
+            "price": 699
+          }
+        ]
+      },
+      {
+        "id": "f75ba147-6ad2-40c3-93a9-761165b6c82b",
+        "name": "Ноутбуки",
+        "products": [
+          {
+            "id": "61693b30-5f0e-4f9a-99bc-9552ef664872",
+            "name": "MacBook Pro",
+            "description": "Ноутбук от Apple",
+            "price": 1299
+          },
+          {
+            "id": "72ce8f01-2aeb-4600-8ee8-ff9ca48a2188",
+            "name": "Dell XPS 13",
+            "description": "Ноутбук от Dell",
+            "price": 999
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a81c4cbe-3ecc-4ce2-ba0b-864e66c2e793",
+    "name": "Бытовая техника",
+    "subCategories": [
+      {
+        "id": "2904e3cb-93e4-4d7b-be94-65efc3e431e3",
+        "name": "Холодильники",
+        "products": [
+          {
+            "id": "327b8b36-f088-4227-b7bc-6ca74ff62129",
+            "name": "LG X127",
+            "description": "Холодильник от LG",
+            "price": 499
+          }
+        ]
+      },
+      {
+        "id": "ad3ec31e-84d1-4ad3-b0ad-7ea62fd95d59",
+        "name": "Стиральные машины",
+        "products": [
+          {
+            "id": "bf6c6cb0-5964-4152-af84-1948d425177b",
+            "name": "Bosch Serie 6",
+            "description": "Стиральная машина от Bosch",
+            "price": 599
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -3,6 +3,7 @@ import Section from '../../components/Section/Section';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import Container from '../../components/Container/Container';
+import CatalogGrid from './CatalogGrig/CatalogGrid';
 
 const Catalog: React.FC = () => {
 
@@ -14,6 +15,11 @@ const Catalog: React.FC = () => {
                 <Container>
                     <Breadcrumbs />
                     <SectionTitle title={title} />
+                </Container>                
+            </Section>
+            <Section>
+                <Container>
+                    <CatalogGrid />
                 </Container>                
             </Section>
         </main>
