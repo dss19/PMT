@@ -7,23 +7,28 @@ import Container from '../../../components/Container/Container';
 
 const CategoryInner: React.FC = () => {
 
-    const { categoryId } = useParams();
+    const { slug } = useParams<{ slug: string }>();
+    // const { categoryId } = useParams();
     const [category, setCategory] = useState<ICategory | null>(null);
     const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch(`/data/categories.json`)
-            .then((response) => response.json())
-            .then((data) => {
-                const foundCategory = data.find((cat: ICategory) => cat.id === categoryId);
-                setCategory(foundCategory);
+        fetch('/data/categories.json')
+            .then(response => response.json())
+            .then((data: ICategory[]) => {
+                const foundCategory = data.find(cat => cat.slug === slug);
+                setCategory(foundCategory || null);
+            })
+            .catch(error => {
+                console.error('Ошибка при загрузке данных:', error);
+                setCategory(null);
             });
-    }, [categoryId]);
+    }, [slug]);
 
     if (!category) return <div>Категория не найдена</div>;
 
     const filteredProducts = selectedSubCategory
-        ? category.subCategories.find(sub => sub.id === selectedSubCategory)?.products
+        ? category.subCategories.find(sub => sub.slug === selectedSubCategory)?.products
         : category.subCategories.flatMap(sub => sub.products);   
         
     return (
@@ -35,9 +40,9 @@ const CategoryInner: React.FC = () => {
                         <li className={`category-filter-item ${selectedSubCategory === null ? 'active' : ''}`}
                             onClick={() => setSelectedSubCategory(null)}>Все товары</li>
                         {category.subCategories.map(sub => (
-                            <li className={`category-filter-item ${selectedSubCategory === sub.id ? 'active' : ''}`}
+                            <li className={`category-filter-item ${selectedSubCategory === sub.slug ? 'active' : ''}`}
                                 key={sub.id}
-                                onClick={() => setSelectedSubCategory(sub.id)}>{sub.name}
+                                onClick={() => setSelectedSubCategory(sub.slug)}>{sub.name}
                             </li>
                         ))}
                     </ul>

@@ -1,71 +1,83 @@
 [
   {
-    "id": "f6e7b6dd-375b-4ab7-99a3-46349cdec7ed",
+    "id": "ce2ea143-e1ec-436d-8dbc-54190d4f54bd",
     "name": "Электроника",
+    "slug": "elektronika",
     "subCategories": [
       {
-        "id": "36cac61c-585d-48d0-8ef6-3c572c215a3b",
+        "id": "08d8161e-e02e-434d-ac4a-a8dbb54f9b7d",
         "name": "Смартфоны",
+        "slug": "smartfony",
         "products": [
           {
-            "id": "08b00921-0118-472a-912e-7cb99719a8b3",
+            "id": "9942af0d-0963-4592-99dd-331cd8f0bd2c",
             "name": "iPhone 13",
-            "description": "Смартфон от Apple",
-            "price": 799
+            "slug": "iphone-13",
+            "price": 799,
+            "description": "Смартфон от Apple"
           },
           {
-            "id": "d6f9be7f-7982-4918-9bb8-07ab97068fba",
+            "id": "024942bb-4b01-4fa0-a44c-397224dba631",
             "name": "Samsung Galaxy S21",
-            "description": "Смартфон от Samsung",
-            "price": 699
+            "slug": "samsung-galaxy-s21",
+            "price": 699,
+            "description": "Смартфон от Samsung"
           }
         ]
       },
       {
-        "id": "f75ba147-6ad2-40c3-93a9-761165b6c82b",
+        "id": "dac09a91-af5b-48ee-8b78-39d162267045",
         "name": "Ноутбуки",
+        "slug": "noutbuki",
         "products": [
           {
-            "id": "61693b30-5f0e-4f9a-99bc-9552ef664872",
+            "id": "cc0f31ff-484a-4198-a696-443c474e3a52",
             "name": "MacBook Pro",
-            "description": "Ноутбук от Apple",
-            "price": 1299
+            "slug": "macbook-pro",
+            "price": 1299,
+            "description": "Ноутбук от Apple"
           },
           {
-            "id": "72ce8f01-2aeb-4600-8ee8-ff9ca48a2188",
+            "id": "2dc7110d-4ce4-4ffc-afca-0feb7a7bbd03",
             "name": "Dell XPS 13",
-            "description": "Ноутбук от Dell",
-            "price": 999
+            "slug": "dell-xps-13",
+            "price": 999,
+            "description": "Ноутбук от Dell"
           }
         ]
       }
     ]
   },
   {
-    "id": "a81c4cbe-3ecc-4ce2-ba0b-864e66c2e793",
+    "id": "04c7bfdd-1972-4df8-9b8c-ecdedbaa826f",
     "name": "Бытовая техника",
+    "slug": "bytovaya-tehnika",
     "subCategories": [
       {
-        "id": "2904e3cb-93e4-4d7b-be94-65efc3e431e3",
+        "id": "7e048c25-d7e8-4b6c-a133-b9ad1c056781",
         "name": "Холодильники",
+        "slug": "holodilniki",
         "products": [
           {
-            "id": "327b8b36-f088-4227-b7bc-6ca74ff62129",
+            "id": "1e0920ae-486e-401b-aee5-065ab08262bb",
             "name": "LG X127",
-            "description": "Холодильник от LG",
-            "price": 499
+            "slug": "lg-x127",
+            "price": 499,
+            "description": "Холодильник от LG"
           }
         ]
       },
       {
-        "id": "ad3ec31e-84d1-4ad3-b0ad-7ea62fd95d59",
+        "id": "157bd4c0-70a7-48ed-93ac-0e2e1ce09443",
         "name": "Стиральные машины",
+        "slug": "stiralnye-mashiny",
         "products": [
           {
-            "id": "bf6c6cb0-5964-4152-af84-1948d425177b",
+            "id": "968f8ff7-a923-45d9-bf38-d5cd7a9666a1",
             "name": "Bosch Serie 6",
-            "description": "Стиральная машина от Bosch",
-            "price": 599
+            "slug": "bosch-serie-6",
+            "price": 599,
+            "description": "Стиральная машина от Bosch"
           }
         ]
       }

@@ -1,9 +1,12 @@
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
+const slugify = require('slugify');
+const path = require('path');
 
 interface Product {
     id: string;
     name: string;
+    slug: string;
     price: number;
     description?: string;
 }
@@ -11,88 +14,125 @@ interface Product {
 interface SubCategory {
     id: string;
     name: string;
+    slug: string;
     products: Product[];
 }
 
 interface Category {
     id: string;
     name: string;
+    slug: string;
     subCategories: SubCategory[];
 }
 
-const categories: Category[] = [
+const rawCategories = [
     {
-        id: uuidv4(),
         name: "Электроника",
-        subCategories: [
+        subcategories: [
             {
-                id: uuidv4(),
                 name: "Смартфоны",
                 products: [
-                    {
-                        id: uuidv4(),
-                        name: "iPhone 13",
-                        description: "Смартфон от Apple",
-                        price: 799
-                    },
-                    {
-                        id: uuidv4(),
-                        name: "Samsung Galaxy S21",
-                        description: "Смартфон от Samsung",
-                        price: 699
-                    }
+                    { name: "iPhone 13", price: 799, description: "Смартфон от Apple" },
+                    { name: "Samsung Galaxy S21", price: 699, description: "Смартфон от Samsung" }
                 ]
             },
             {
-                id: uuidv4(),
                 name: "Ноутбуки",
                 products: [
-                    {
-                        id: uuidv4(),
-                        name: "MacBook Pro",
-                        description: "Ноутбук от Apple",
-                        price: 1299
-                    },
-                    {
-                        id: uuidv4(),
-                        name: "Dell XPS 13",
-                        description: "Ноутбук от Dell",
-                        price: 999
-                    }
+                    { name: "MacBook Pro", price: 1299, description: "Ноутбук от Apple" },
+                    { name: "Dell XPS 13", price: 999, description: "Ноутбук от Dell" }
                 ]
             }
         ]
     },
     {
-        id: uuidv4(),
         name: "Бытовая техника",
-        subCategories: [
+        subcategories: [
             {
-                id: uuidv4(),
                 name: "Холодильники",
                 products: [
-                    {
-                        id: uuidv4(),
-                        name: "LG X127",
-                        description: "Холодильник от LG",
-                        price: 499
-                    }
+                    { name: "LG X127", price: 499, description: "Холодильник от LG" }
                 ]
             },
             {
-                id: uuidv4(),
                 name: "Стиральные машины",
                 products: [
-                    {
-                        id: uuidv4(),
-                        name: "Bosch Serie 6",
-                        description: "Стиральная машина от Bosch",
-                        price: 599
-                    }
+                    { name: "Bosch Serie 6", price: 599, description: "Стиральная машина от Bosch" }
                 ]
             }
         ]
     }
 ];
 
-fs.writeFileSync('public/data/categories.json', JSON.stringify(categories, null, 2));
+// Функция для генерации уникального слага
+const generateUniqueSlug = (name: string, existingSlugs: Set<string>): string => {
+    let slug = slugify(name, {
+        replacement: '-',  // заменяем пробелы на дефис
+        remove: /[*+~.()'"!:@]/g, // удаляем специальные символы
+        lower: true,      // переводим в нижний регистр
+        strict: true      // строгое преобразование
+    });
+
+    let uniqueSlug = slug;
+    let suffix = 1;
+
+    // Проверяем уникальность слага
+    while (existingSlugs.has(uniqueSlug)) {
+        uniqueSlug = `${slug}-${suffix}`;
+        suffix++;
+    }
+
+    existingSlugs.add(uniqueSlug);
+    return uniqueSlug;
+};
+
+const generateData = (): Category[] => {
+    const categorySlugs = new Set<string>();
+    const categories: Category[] = rawCategories.map(cat => {
+        const categorySlug = generateUniqueSlug(cat.name, categorySlugs);
+
+        const subCategorySlugs = new Set<string>();
+        const subCategories: SubCategory[] = cat.subcategories.map(sub => {
+            const subSlug = generateUniqueSlug(sub.name, subCategorySlugs);
+
+            const productSlugs = new Set<string>();
+            const products: Product[] = sub.products.map(prod => {
+                const prodSlug = generateUniqueSlug(prod.name, productSlugs);
+                return {
+                    id: uuidv4(),
+                    name: prod.name,
+                    slug: prodSlug,
+                    price: prod.price,
+                    description: prod.description
+                };
+            });
+
+            return {
+                id: uuidv4(),
+                name: sub.name,
+                slug: subSlug,
+                products
+            };
+        });
+
+        return {
+            id: uuidv4(),
+            name: cat.name,
+            slug: categorySlug,
+            subCategories
+        };
+    });
+
+    return categories;
+};
+
+const data = generateData();
+
+// Убедитесь, что директория существует
+const outputPath = path.join(__dirname, '..', 'public', 'data');
+if (!fs.existsSync(outputPath)) {
+    fs.mkdirSync(outputPath, { recursive: true });
+}
+
+// Записываем данные в JSON файл
+fs.writeFileSync(path.join(outputPath, 'categories.json'), JSON.stringify(data, null, 2), 'utf-8');

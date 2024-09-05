@@ -12,7 +12,7 @@ const CatalogCategories: React.FC<CategoryProps> = ({ category }) => {
     
         
     return (
-        <Link to={ `/catalog/${category.id}` } className="catalog-categories">
+        <Link to={ `/catalog/${category.slug}` } className="catalog-categories">
             <h5>{ category.name }</h5>            
         </Link>
     );
