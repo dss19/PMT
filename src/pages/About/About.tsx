@@ -5,6 +5,7 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import Container from '../../components/Container/Container';
 import AboutContent from './AboutContent/AboutContent';
 
+
 const About: React.FC = () => {
 
     const [title] = useState<string>('О компании Пневмоторг и бренде РМТ');
