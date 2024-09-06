@@ -15,13 +15,27 @@ interface Category {
     id: string;
     name: string;
     slug: string;
+    subCategories: SubCategory[];
+}
+
+interface SubCategory {
+    id: string;
+    name: string;
+    slug: string;
+    products: Product[];
+}
+
+interface Product {
+    id: string;
+    name: string;
+    slug: string;
 }
 
 const BreadCrumbs: React.FC = () => {
     const location = useLocation();
     const [categories, setCategories] = useState<Category[]>([]);
 
-    // Получение данных через fetch
+    // Получение данных из JSON
     useEffect(() => {
         fetch('/data/categories.json')
             .then((response) => response.json())
@@ -49,12 +63,29 @@ const BreadCrumbs: React.FC = () => {
             }
 
             // Поиск для динамических страниц (категории и товары)
+            let name = decodeURIComponent(part);
             const category = categories.find(cat => cat.slug === part);
-            const name = category ? category.name : decodeURIComponent(part); // Переводим slug на русское название
+            if (category) {
+                name = category.name;
+            } else {
+                categories.forEach(cat => {
+                    const subCategory = cat.subCategories.find(sub => sub.slug === part);
+                    if (subCategory) {
+                        name = subCategory.name;
+                    } else {
+                        cat.subCategories.forEach(sub => {
+                            const product = sub.products.find(prod => prod.slug === part);
+                            if (product) {
+                                name = product.name;
+                            }
+                        });
+                    }
+                });
+            }
 
             return !isLast ? (
                 <React.Fragment key={index}>
-                    <Link className='breadcrumbs-link' to={path}>{name}</Link>&nbsp;—&nbsp;
+                    <Link className="breadcrumbs-link" to={path}>{name}</Link>&nbsp;—&nbsp;
                 </React.Fragment>
             ) : (
                 name
@@ -64,7 +95,7 @@ const BreadCrumbs: React.FC = () => {
 
     return (
         <div className="breadcrumbs">
-            <Link className='breadcrumbs-link' to="/">Главная</Link>&nbsp;—&nbsp;{generateBreadcrumb(pathArray)}
+            <Link className="breadcrumbs-link" to="/">Главная</Link>&nbsp;—&nbsp;{generateBreadcrumb(pathArray)}
         </div>
     );
 };
