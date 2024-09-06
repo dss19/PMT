@@ -1,47 +1,63 @@
 [
   {
-    "id": "ce2ea143-e1ec-436d-8dbc-54190d4f54bd",
+    "id": "ba599ba6-fa95-4e31-901a-a21324d1cfbb",
     "name": "Электроника",
     "slug": "elektronika",
     "subCategories": [
       {
-        "id": "08d8161e-e02e-434d-ac4a-a8dbb54f9b7d",
+        "id": "5d893d82-9801-47f5-88f5-32d303b577db",
         "name": "Смартфоны",
         "slug": "smartfony",
         "products": [
           {
-            "id": "9942af0d-0963-4592-99dd-331cd8f0bd2c",
+            "id": "9a36ef5b-3af1-4e2c-9805-21f91b1b49a5",
             "name": "iPhone 13",
             "slug": "iphone-13",
             "price": 799,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
             "description": "Смартфон от Apple"
           },
           {
-            "id": "024942bb-4b01-4fa0-a44c-397224dba631",
+            "id": "324e201b-d586-43ce-91b8-ca5fac76d1ed",
             "name": "Samsung Galaxy S21",
             "slug": "samsung-galaxy-s21",
             "price": 699,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
             "description": "Смартфон от Samsung"
           }
         ]
       },
       {
-        "id": "dac09a91-af5b-48ee-8b78-39d162267045",
+        "id": "fea1a36a-887d-4590-af56-1e7dafdb42fd",
         "name": "Ноутбуки",
         "slug": "noutbuki",
         "products": [
           {
-            "id": "cc0f31ff-484a-4198-a696-443c474e3a52",
+            "id": "edf22f14-4e85-4db7-9f1e-c68ef3bb2fb7",
             "name": "MacBook Pro",
             "slug": "macbook-pro",
             "price": 1299,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
             "description": "Ноутбук от Apple"
           },
           {
-            "id": "2dc7110d-4ce4-4ffc-afca-0feb7a7bbd03",
+            "id": "2de53a1a-96b8-4514-8775-a102011f79b3",
             "name": "Dell XPS 13",
             "slug": "dell-xps-13",
             "price": 999,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
             "description": "Ноутбук от Dell"
           }
         ]
@@ -49,35 +65,110 @@
     ]
   },
   {
-    "id": "04c7bfdd-1972-4df8-9b8c-ecdedbaa826f",
+    "id": "7dbebf02-4115-479d-93d9-2233f83e67e5",
     "name": "Бытовая техника",
     "slug": "bytovaya-tehnika",
     "subCategories": [
       {
-        "id": "7e048c25-d7e8-4b6c-a133-b9ad1c056781",
+        "id": "65b01eb1-7831-43bf-a362-6653d620d51c",
         "name": "Холодильники",
         "slug": "holodilniki",
         "products": [
           {
-            "id": "1e0920ae-486e-401b-aee5-065ab08262bb",
+            "id": "62676a60-a55c-4f1b-b144-8fad9acd2deb",
             "name": "LG X127",
             "slug": "lg-x127",
             "price": 499,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
             "description": "Холодильник от LG"
           }
         ]
       },
       {
-        "id": "157bd4c0-70a7-48ed-93ac-0e2e1ce09443",
+        "id": "dbb5eff0-14b3-4d32-a179-1cd65800e6c1",
         "name": "Стиральные машины",
         "slug": "stiralnye-mashiny",
         "products": [
           {
-            "id": "968f8ff7-a923-45d9-bf38-d5cd7a9666a1",
+            "id": "e086783e-c15e-4431-b332-1b0e2b43ff78",
             "name": "Bosch Serie 6",
             "slug": "bosch-serie-6",
             "price": 599,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
             "description": "Стиральная машина от Bosch"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4c79533b-8204-4d63-aff9-a8af29bd65b7",
+    "name": "Пневмоинструмент",
+    "slug": "pnevmoinstrument",
+    "subCategories": [
+      {
+        "id": "6d228bbe-d7c6-4c9f-9e05-7d494c6c0a56",
+        "name": "Прямые шлифмашишки",
+        "slug": "pryamye-shlifmashishki",
+        "products": [
+          {
+            "id": "ac7230e4-b2ee-475b-b4a1-672c645f4e43",
+            "name": "Пневмошлифмашинка прямая РМТ ИП-2063",
+            "slug": "pnevmoshlifmashinka-pryamaya-rmt-ip-2063",
+            "price": 10000,
+            "sku": "article",
+            "images": [
+              "/images/2063.jpg",
+              "/images/2063-2.jpg",
+              "/images/2063-3.jpg"
+            ],
+            "description": "Прямая шлифмашинка для зачистки"
+          },
+          {
+            "id": "171ac078-8aaa-4262-bc1a-7ab3fe156394",
+            "name": "Пневмошлифмашинка прямая РМТ ИП-2020",
+            "slug": "pnevmoshlifmashinka-pryamaya-rmt-ip-2020",
+            "price": 15000,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
+            "description": "Прямая шлифмашинка для шлифовки"
+          }
+        ]
+      },
+      {
+        "id": "49b68c7b-18cb-4389-bce3-e41fa041fbad",
+        "name": "Угловые шлифмашинки",
+        "slug": "uglovye-shlifmashinki",
+        "products": [
+          {
+            "id": "64ce5055-f9ae-4c20-a201-ebe6b7573782",
+            "name": "Пневмошлифмашинка угловая РМТ ПШМ-125У",
+            "slug": "pnevmoshlifmashinka-uglovaya-rmt-pshm-125u",
+            "price": 8000,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
+            "description": "Прямая шлифмашинка для зачистки"
+          },
+          {
+            "id": "07ed36e6-2d36-4e39-9d3b-a8793b1a7d65",
+            "name": "Пневмошлифмашинка угловая РМТ ПШМ-230У",
+            "slug": "pnevmoshlifmashinka-uglovaya-rmt-pshm-230u",
+            "price": 12000,
+            "sku": "article",
+            "images": [
+              "/images/no-image.png"
+            ],
+            "description": "Прямая шлифмашинка для шлифовки"
           }
         ]
       }

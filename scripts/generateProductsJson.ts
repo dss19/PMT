@@ -8,6 +8,8 @@ interface Product {
     name: string;
     slug: string;
     price: number;
+    sku: string;
+    images: string[];
     description?: string;
 }
 
@@ -32,15 +34,15 @@ const rawCategories = [
             {
                 name: "Смартфоны",
                 products: [
-                    { name: "iPhone 13", price: 799, description: "Смартфон от Apple" },
-                    { name: "Samsung Galaxy S21", price: 699, description: "Смартфон от Samsung" }
+                    { name: "iPhone 13", price: 799, description: "Смартфон от Apple", images: [], sku: "article" },
+                    { name: "Samsung Galaxy S21", price: 699, description: "Смартфон от Samsung", images: [], sku: "article" }
                 ]
             },
             {
                 name: "Ноутбуки",
                 products: [
-                    { name: "MacBook Pro", price: 1299, description: "Ноутбук от Apple" },
-                    { name: "Dell XPS 13", price: 999, description: "Ноутбук от Dell" }
+                    { name: "MacBook Pro", price: 1299, description: "Ноутбук от Apple", images: [], sku: "article" },
+                    { name: "Dell XPS 13", price: 999, description: "Ноутбук от Dell", images: [], sku: "article" }
                 ]
             }
         ]
@@ -51,13 +53,32 @@ const rawCategories = [
             {
                 name: "Холодильники",
                 products: [
-                    { name: "LG X127", price: 499, description: "Холодильник от LG" }
+                    { name: "LG X127", price: 499, description: "Холодильник от LG", images: [], sku: "article" }
                 ]
             },
             {
                 name: "Стиральные машины",
                 products: [
-                    { name: "Bosch Serie 6", price: 599, description: "Стиральная машина от Bosch" }
+                    { name: "Bosch Serie 6", price: 599, description: "Стиральная машина от Bosch", images: [], sku: "article" }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Пневмоинструмент",
+        subcategories: [
+            {
+                name: "Прямые шлифмашишки",
+                products: [
+                    { name: "Пневмошлифмашинка прямая РМТ ИП-2063", price: 10000, description: "Прямая шлифмашинка для зачистки", images: ["/images/2063.jpg", "/images/2063-2.jpg", "/images/2063-3.jpg" ], sku: "article" },
+                    { name: "Пневмошлифмашинка прямая РМТ ИП-2020", price: 15000, description: "Прямая шлифмашинка для шлифовки", images: [], sku: "article" }
+                ]
+            },
+            {
+                name: "Угловые шлифмашинки",
+                products: [
+                    { name: "Пневмошлифмашинка угловая РМТ ПШМ-125У", price: 8000, description: "Прямая шлифмашинка для зачистки", images: [], sku: "article" },
+                    { name: "Пневмошлифмашинка угловая РМТ ПШМ-230У", price: 12000, description: "Прямая шлифмашинка для шлифовки", images: [], sku: "article" }
                 ]
             }
         ]
@@ -86,8 +107,11 @@ const generateUniqueSlug = (name: string, existingSlugs: Set<string>): string =>
     return uniqueSlug;
 };
 
+// Генерация данных для товаров с проверкой на изображения
 const generateData = (): Category[] => {
+    const placeholderImage = '/images/no-image.png';  // Путь к заглушке
     const categorySlugs = new Set<string>();
+    
     const categories: Category[] = rawCategories.map(cat => {
         const categorySlug = generateUniqueSlug(cat.name, categorySlugs);
 
@@ -98,11 +122,17 @@ const generateData = (): Category[] => {
             const productSlugs = new Set<string>();
             const products: Product[] = sub.products.map(prod => {
                 const prodSlug = generateUniqueSlug(prod.name, productSlugs);
+
+                // Проверяем массив изображений
+                const images = prod.images && prod.images.length > 0 ? prod.images : [placeholderImage];
+
                 return {
                     id: uuidv4(),
                     name: prod.name,
                     slug: prodSlug,
                     price: prod.price,
+                    sku: prod.sku,  // Генерация уникального артикула
+                    images,  // Назначение изображений или заглушки
                     description: prod.description
                 };
             });

@@ -1,19 +1,25 @@
 import React from "react";
 import './product-card.css';
 import IProduct from '../../models/IProduct';
+import { Link } from 'react-router-dom';
 
-interface ProductProps {
-    product: IProduct
+interface ProductCardProps {
+    product: IProduct,
+    to: string
 }
 
-const ProductCard: React.FC<ProductProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, to }) => {
 
     return (
-        <div className="product-card">
+        <Link to={to} className="product-card">
             <div className="product-card-name">{ product.name }</div>
             <div className="product-card-price">{ product.price }</div>
-        </div>
+            <div className="product-card-article">{ product.sku }</div>
+            <div className="product-card-img">
+                <img src={ product.images[0] } alt={ product.sku } />
+            </div>
+        </Link>
     )
 }
 
-export default ProductCard;
+export default ProductCard
