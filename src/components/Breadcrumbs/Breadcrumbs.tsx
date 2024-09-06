@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './breadcrumbs.css';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -11,8 +11,24 @@ const breadcrumbMap: Record<string, string> = {
     '/catalog': 'Каталог'
 };
 
+interface Category {
+    id: string;
+    name: string;
+    slug: string;
+}
+
 const BreadCrumbs: React.FC = () => {
     const location = useLocation();
+    const [categories, setCategories] = useState<Category[]>([]);
+
+    // Получение данных через fetch
+    useEffect(() => {
+        fetch('/data/categories.json')
+            .then((response) => response.json())
+            .then((data) => setCategories(data))
+            .catch((error) => console.error('Ошибка загрузки данных:', error));
+    }, []);
+
     const pathArray = location.pathname.split('/').filter(Boolean);
 
     const generateBreadcrumb = (pathArray: string[]) => {
@@ -21,6 +37,7 @@ const BreadCrumbs: React.FC = () => {
             path += `/${part}`;
             const isLast = index === pathArray.length - 1;
 
+            // Проверка для статических страниц
             if (breadcrumbMap[`/${part}`]) {
                 return !isLast ? (
                     <React.Fragment key={index}>
@@ -31,10 +48,13 @@ const BreadCrumbs: React.FC = () => {
                 );
             }
 
-            const name = decodeURIComponent(part);
+            // Поиск для динамических страниц (категории и товары)
+            const category = categories.find(cat => cat.slug === part);
+            const name = category ? category.name : decodeURIComponent(part); // Переводим slug на русское название
+
             return !isLast ? (
                 <React.Fragment key={index}>
-                    <Link to={path}>{name}</Link>&nbsp;—&nbsp; 
+                    <Link className='breadcrumbs-link' to={path}>{name}</Link>&nbsp;—&nbsp;
                 </React.Fragment>
             ) : (
                 name
@@ -44,7 +64,7 @@ const BreadCrumbs: React.FC = () => {
 
     return (
         <div className="breadcrumbs">
-            <Link to="/">Главная</Link>&nbsp;—&nbsp;{generateBreadcrumb(pathArray)}
+            <Link className='breadcrumbs-link' to="/">Главная</Link>&nbsp;—&nbsp;{generateBreadcrumb(pathArray)}
         </div>
     );
 };

@@ -1,11 +1,19 @@
 .breadcrumbs {
-    padding: 30px 0;
-    font-size: 18px;
+    padding: 20px 0;
+    font-size: 16px;
+    font-weight: 500;
+    /* color: var(--main); */
+}
+
+.breadcrumbs-link,
+.breadcrumbs a {
+    color: var(--main);
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px) {
     .breadcrumbs {
-        padding: 20px 0;
-        font-size: 16px;
+        padding: 16px 0;
+        font-size: 14px;
     }
 }
