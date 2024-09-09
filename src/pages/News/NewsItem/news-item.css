@@ -53,3 +53,37 @@
     margin-top: auto;
     cursor: pointer;
 }
+
+@media screen and (max-width: 992px) {
+    .news-item-img {
+        width: 200px;
+        max-width: 200px;
+        min-width: 200px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .news-item {
+        padding: 20px 0;
+    }
+
+    .news-item-wrap {
+        flex-direction: column-reverse;
+    }
+
+    .news-item-info {
+        margin-bottom: 20px;
+    }
+    .news-item-img {
+        width: 100%;
+        max-width: none;
+        min-width: none;
+        margin-right: 0;
+    }
+
+    .news-item-img img {
+        width: 100%;
+    }
+}
