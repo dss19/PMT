@@ -3,8 +3,9 @@ export default interface Product {
     name: string;
     slug: string;
     price: number;
+    quantity: number,
     sku: string;
-    images: string[];
     description?: string;
+    images: string[];
 }
 

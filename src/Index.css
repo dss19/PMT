@@ -44,7 +44,11 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
-body {
+
+
+
+body,
+#root {
     position: relative;
     font-family: "Noah", sans-serif;
     display: flex;
