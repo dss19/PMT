@@ -19,7 +19,7 @@
     position: relative;
     font-size: 22px;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 2;
     margin-right: 30px;
     color: var(--main);
     overflow: hidden;
@@ -30,7 +30,7 @@
 .category-filter-item::after {
     position: absolute;
     content: '';
-    bottom: 0;
+    bottom: 8px;
     left: 0;
     width: 100%;
     height: 2px;
