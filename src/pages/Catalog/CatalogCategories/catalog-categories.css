@@ -17,6 +17,6 @@
 
 @media screen and (min-width: 993px) {
     .catalog-categories:hover {
-        box-shadow: 0 2px 20px rgba(0, 85, 141, .1);
+        box-shadow: 0 2px 20px rgba(0, 85, 141, .2);
     }
 }
