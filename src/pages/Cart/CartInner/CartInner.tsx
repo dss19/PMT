@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../store/store'; // Импорт состояния из Redux store
-import { removeFromCart, clearCart } from '../../../store/reducers/CartSlice';
+import { RootState } from '../../../store/store'; 
+import { removeFromCart, clearCart, increaseItemQuantity } from '../../../store/reducers/CartSlice';
+import { Link } from 'react-router-dom';
+import './cart-inner.css';
 
 const CartInner: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,20 +17,32 @@ const CartInner: React.FC = () => {
     dispatch(clearCart());
   };
 
+  const handleIncreaseQuantity = (id: string) => {
+    dispatch(increaseItemQuantity( id ));
+  };
+
   if (totalQuantity === 0) {
-    return <div className="cart-empty">Ваша корзина пуста</div>;
+    return <div className="cart-empty">Ваша корзина пуста, хотите вернуться в <Link to={'/catalog'} className="cart-empty-link">Каталог</Link>?</div>;
   }
 
   return (
-    <div className="cart-container">
-      <h2>Корзина</h2>
+    <div className="cart-list">
       <div className="cart-items">
         {items.map(item => (
           <div key={item.id} className="cart-item">
-            <span>{item.name}</span>
-            <span>Цена: {item.price} руб.</span>
-            <span>Количество: {item.quantity}</span>
-            <button onClick={() => handleRemoveFromCart(item.id, 1)}>Удалить одну единицу</button>
+            <div className="cart-item-img">
+              <img src={item.images[0]} alt="" />
+            </div>
+            <div className="cart-item-info">
+              <div className="cart-item-name">{item.name}</div>
+              <div className="cart-item-sku">Артикул: {item.sku}</div>
+            </div>
+            <div className="cart-item-price">Цена: {item.price} руб.</div>
+            <div className="cart-item-quantity">
+              <div onClick={() => handleRemoveFromCart(item.id, 1)} className="cart-item-quantity-btn">-</div>
+              <div className="cart-item-quantity-number">{item.quantity}</div>
+              <div onClick={() => handleIncreaseQuantity(item.id)} className="cart-item-quantity-btn">+</div>
+            </div>
             <button onClick={() => handleRemoveFromCart(item.id, item.quantity)}>Удалить все</button>
           </div>
         ))}

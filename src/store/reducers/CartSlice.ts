@@ -59,9 +59,17 @@ const cartSlice = createSlice({
       state.items = [];
       state.totalQuantity = 0;
       saveToLocalStorage(state);
+    },
+    increaseItemQuantity(state, action: PayloadAction<string>) {
+      const existingItem = state.items.find(item => item.id === action.payload);
+      if (existingItem) {
+        existingItem.quantity++;
+        state.totalQuantity++;
+        saveToLocalStorage(state);
+      }
     }
   }
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, increaseItemQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
