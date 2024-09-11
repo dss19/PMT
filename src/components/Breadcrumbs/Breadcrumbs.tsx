@@ -8,7 +8,8 @@ const breadcrumbMap: Record<string, string> = {
     '/news': 'Новости',
     '/payment': 'Оплата и доставка',
     '/contacts': 'Контакты',
-    '/catalog': 'Каталог'
+    '/catalog': 'Каталог',
+    '/cart': 'Корзина'
 };
 
 interface Category {

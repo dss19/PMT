@@ -1,17 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import sprite from '../../../../../assets/images/sprite.svg';
 import './header-cart.css';
+import { Link } from 'react-router-dom';
+import { RootState } from '../../../../../store/store';
 
 const HeaderCart: React.FC = () => {
+
+    const { totalQuantity } = useSelector((state: RootState) => state.CartSlice);
+    const visibleQuantity = totalQuantity === 0 ? '' : totalQuantity
+
     return (
-        <a href="/" className="header-cart">
+        <Link to={'/cart'} className="header-cart">
             <div className="header-cart-wrap">
-                <span className="count">2</span>
+                <span className="count">{ visibleQuantity }</span>
                 <svg className="header-cart-icon">
                     <use href={`${sprite}#cart`}></use>
                 </svg>
             </div>            
-        </a>
+        </Link>
     );
 };
 

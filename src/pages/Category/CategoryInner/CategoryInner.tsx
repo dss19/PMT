@@ -49,13 +49,11 @@ const CategoryInner: React.FC = () => {
         </Container>                
       </div>
       <div className="product-list">
-        <Container>
           <div className="product-list-grid">
             {filteredProducts?.map(product => (
               <ProductCard key={product.id} product={product} to={`/catalog/${category.slug}/${product.slug}`} />
             ))}
-          </div>          
-        </Container>                
+          </div>
       </div>
     </div>
   );

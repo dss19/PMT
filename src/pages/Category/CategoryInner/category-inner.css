@@ -18,7 +18,7 @@
 .category-filter-item {
     position: relative;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 800;
     line-height: 2;
     margin-right: 30px;
     color: var(--main);
@@ -45,7 +45,7 @@
 
 .product-list-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     border-left: 1px solid var(--line);    
     border-right: 1px solid var(--line);    
     border-bottom: 1px solid var(--line);    
