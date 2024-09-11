@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store'; 
-import { removeFromCart, clearCart, increaseItemQuantity } from '../../../store/reducers/CartSlice';
+import { removeFromCart, clearCart, increaseItemQuantity, updateQuantity } from '../../../store/reducers/CartSlice';
 import { Link } from 'react-router-dom';
 import './cart-inner.css';
 
 const CartInner: React.FC = () => {
   const dispatch = useDispatch();
-  const { items, totalQuantity } = useSelector((state: RootState) => state.CartSlice);
+  const { items, totalQuantity, totalPrice } = useSelector((state: RootState) => state.CartSlice);
 
   const handleRemoveFromCart = (id: string, quantity: number) => {
     dispatch(removeFromCart({ id, quantity }));
@@ -19,6 +19,10 @@ const CartInner: React.FC = () => {
 
   const handleIncreaseQuantity = (id: string) => {
     dispatch(increaseItemQuantity( id ));
+  };
+
+  const handleQuantityChange = (id: string, quantity: number) => {
+    dispatch(updateQuantity({ id, quantity }));
   };
 
   if (totalQuantity === 0) {
@@ -38,9 +42,14 @@ const CartInner: React.FC = () => {
               <div className="cart-item-sku">Артикул: {item.sku}</div>
             </div>
             <div className="cart-item-price">Цена: {item.price} руб.</div>
+            <div className="cart-item-total-price">Итого: {item.price * item.quantity} руб.</div>
             <div className="cart-item-quantity">
               <div onClick={() => handleRemoveFromCart(item.id, 1)} className="cart-item-quantity-btn">-</div>
-              <div className="cart-item-quantity-number">{item.quantity}</div>
+              <input
+                type="number"
+                value={item.quantity}
+                onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))}
+              />
               <div onClick={() => handleIncreaseQuantity(item.id)} className="cart-item-quantity-btn">+</div>
             </div>
             <button onClick={() => handleRemoveFromCart(item.id, item.quantity)}>Удалить все</button>
@@ -49,6 +58,7 @@ const CartInner: React.FC = () => {
       </div>
       <div className="cart-summary">
         <span>Всего товаров: {totalQuantity}</span>
+        <span>На сумму: {totalPrice}</span>
         <button onClick={handleClearCart}>Очистить корзину</button>
       </div>
     </div>

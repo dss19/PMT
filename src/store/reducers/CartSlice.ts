@@ -14,16 +14,19 @@ interface CartItem {
 interface CartState {
   items: CartItem[];
   totalQuantity: number;
+  totalPrice: number;
 }
 
 const initialState: CartState = {
   items: JSON.parse(localStorage.getItem('cartItems') || '[]'),
   totalQuantity: JSON.parse(localStorage.getItem('totalQuantity') || '0'),
+  totalPrice: JSON.parse(localStorage.getItem('totalPrice') || '0')
 };
 
 const saveToLocalStorage = (state: CartState) => {
   localStorage.setItem('cartItems', JSON.stringify(state.items));
   localStorage.setItem('totalQuantity', JSON.stringify(state.totalQuantity));
+  localStorage.setItem('totalPrice', JSON.stringify(state.totalPrice));
 };
 
 const cartSlice = createSlice({
@@ -67,9 +70,19 @@ const cartSlice = createSlice({
         state.totalQuantity++;
         saveToLocalStorage(state);
       }
+    },
+    updateQuantity(state, action: PayloadAction<{ id: string, quantity: number }>) {
+      const { id, quantity } = action.payload;
+      const existingItem = state.items.find(item => item.id === id);
+
+      if (existingItem) {
+        existingItem.quantity = quantity;
+        state.totalPrice = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
+        saveToLocalStorage(state);
+      }
     }
   }
 });
 
-export const { addToCart, removeFromCart, clearCart, increaseItemQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, increaseItemQuantity, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
