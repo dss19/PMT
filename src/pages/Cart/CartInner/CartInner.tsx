@@ -38,21 +38,22 @@ const CartInner: React.FC = () => {
             <div className="cart-item-info">
               <div className="cart-item-name">{item.name}</div>
               <div className="cart-item-sku">Артикул: {item.sku}</div>
+              <div className="cart-item-price">Цена: <span>{item.price}₽</span></div>
+              <div className="cart-item-quantity">
+                <span>Количество:</span>
+                <button onClick={() => handleRemoveFromCart(item.id, 1)} className="cart-item-quantity-btn">-</button>
+                <div className="cart-item-quantity-value">{item.quantity}</div>
+                <button onClick={() => handleIncreaseQuantity(item)} className="cart-item-quantity-btn">+</button>
+              </div>
+              <div className="cart-item-price-total">Итого: <span>{item.price * item.quantity}₽</span></div>
+              <button className="cart-item-remove" onClick={() => handleRemoveFromCart(item.id, item.quantity)}>Удалить из заказа</button>
             </div>
-            <div className="cart-item-price">Цена: {item.price} руб.</div>
-            <div className="cart-item-total-price">Итого: {item.price * item.quantity} руб.</div>
-            <div className="cart-item-quantity">
-              <button onClick={() => handleRemoveFromCart(item.id, 1)} className="cart-item-quantity-btn">-</button>
-              <div className="cart-item-quantity-value">{item.quantity}</div>
-              <button onClick={() => handleIncreaseQuantity(item)} className="cart-item-quantity-btn">+</button>
-            </div>
-            <button onClick={() => handleRemoveFromCart(item.id, item.quantity)}>Удалить все</button>
           </div>
         ))}
       </div>
       <div className="cart-summary">
-        <span>Всего товаров: {totalQuantity}</span>
-        <span>На сумму: {totalPrice} руб.</span>
+        <div className="cart-summary-text">Всего товаров: <span>{totalQuantity}</span></div>
+        <div className="cart-summary-text">На сумму: <span>{totalPrice}₽</span></div>
         <button onClick={handleClearCart}>Очистить корзину</button>
       </div>
     </div>
