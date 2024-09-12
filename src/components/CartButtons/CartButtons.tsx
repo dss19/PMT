@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store/reducers/CartSlice'; // Импорт экшена добавления в корзину
+import { addOrUpdateItem } from '../../store/reducers/CartSlice';
 import { useNavigate } from 'react-router-dom';
 import IProduct from '../../models/IProduct';
 import './cart-buttons.css';
@@ -14,12 +14,12 @@ const CartButtons: React.FC<CartButtonsProps> = ({ product }) => {
     const navigate = useNavigate();
   
     const handleAddToCart = () => {
-      dispatch(addToCart(product)); // Добавление товара в корзину
+      dispatch(addOrUpdateItem({ id: product.id, item: product, quantity: 1 }));
     };
   
     const handleOrderNow = () => {
-      dispatch(addToCart(product)); // Добавление товара в корзину
-      navigate('/cart'); // Переход на страницу корзины
+      dispatch(addOrUpdateItem({ id: product.id, item: product, quantity: 1 }));
+      navigate('/cart');
     };
   
     return (
