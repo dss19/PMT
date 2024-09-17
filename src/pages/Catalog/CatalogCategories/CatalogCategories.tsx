@@ -7,10 +7,7 @@ interface CategoryProps {
     category: ICategory
 }
 
-const CatalogCategories: React.FC<CategoryProps> = ({ category }) => {  
-    
-    console.log(category);
-    
+const CatalogCategories: React.FC<CategoryProps> = ({ category }) => {      
         
     return (
         <Link to={ `/catalog/${category.slug}` } className="catalog-categories">

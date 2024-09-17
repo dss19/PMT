@@ -4,6 +4,6 @@ export default interface Category {
     id: string;
     name: string;
     slug: string;
-    subCategories: ISubCategory[];
+    subcategories: ISubCategory[];
     iconurl: string;
 }

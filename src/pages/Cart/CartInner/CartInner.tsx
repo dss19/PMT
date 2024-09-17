@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store'; 
 import { removeFromCart, clearCart, addOrUpdateItem } from '../../../store/reducers/CartSlice';
@@ -7,7 +7,15 @@ import './cart-inner.css';
 
 const CartInner: React.FC = () => {
   const dispatch = useDispatch();
-  const { items, totalQuantity, totalPrice } = useSelector((state: RootState) => state.CartSlice);
+  const { items } = useSelector((state: RootState) => state.CartSlice);
+
+  const totalQuantity = useMemo(() => {
+    return items.reduce((acc, item) => acc + item.quantity, 0);
+  }, [items]);
+
+  const totalPrice = useMemo(() => {
+    return items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }, [items]);
 
   const handleRemoveFromCart = (id: string, quantity: number) => {
     dispatch(removeFromCart({ id, quantity }));
