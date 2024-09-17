@@ -3,11 +3,8 @@ import './catalog-categories.css';
 import ICategory from '../../../models/ICaterogy';
 import { Link } from 'react-router-dom';
 
-interface CategoryProps {
-    category: ICategory
-}
 
-const CatalogCategories: React.FC<CategoryProps> = ({ category }) => {      
+const CatalogCategories: React.FC<{ category: ICategory }> = React.memo(({ category }) => {     
         
     return (
         <Link to={ `/catalog/${category.slug}` } className="catalog-categories">
@@ -15,6 +12,6 @@ const CatalogCategories: React.FC<CategoryProps> = ({ category }) => {
             <img className="catalog-categories-img" src={category.iconurl} alt={ category.name } />         
         </Link>
     );
-};
+});
 
 export default CatalogCategories;
