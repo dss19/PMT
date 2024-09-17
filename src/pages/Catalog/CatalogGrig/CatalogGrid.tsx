@@ -1,42 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './catalog-grid.css';
 import CatalogCategories from '../CatalogCategories/CatalogCategories';
-import ICategory from '../../../models/ICaterogy';
+import { fetchCategories } from '../../../store/thunks';
+import { RootState, AppDispatch } from '../../../store/store';
 
 const CatalogGrid: React.FC = () => {
-    const [categoriesList, setCategoriesList] = useState<ICategory[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+    const dispatch: AppDispatch = useDispatch(); // Используем тип для dispatch
+
+    const { categories, loading, error } = useSelector((state: RootState) => state.ProductsSlice); // Меняем на правильный slice
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/categories'); // Проверьте правильность URL
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setCategoriesList(data);
-            } catch (error) {
-                if (error instanceof Error) {
-                    setError(error.message);
-                } else {
-                    setError('An unexpected error occurred');
-                }
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCategories();
-    }, []);
+        dispatch(fetchCategories()); // Используем thunk
+    }, [dispatch]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
         <div className="catalog-grid">
-            {categoriesList.map((category) => (
+            {categories.map((category) => (
                 <CatalogCategories key={category.id} category={category} />
             ))}
         </div>
@@ -44,4 +27,3 @@ const CatalogGrid: React.FC = () => {
 };
 
 export default CatalogGrid;
-
