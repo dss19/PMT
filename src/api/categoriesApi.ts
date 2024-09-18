@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import ICategory from '../models/ICaterogy';
+import IProduct from '../models/IProduct';
 
 export const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
@@ -11,8 +12,11 @@ export const categoriesApi = createApi({
     getCategoryBySlug: builder.query<ICategory, string>({
       query: (slug) => `categories/${slug}`,
     }),
+    getProductById: builder.query<IProduct, string>({
+      query: (id) => `products/${id}`,
+    }),
   }),
 });
 
 // Экспортируем хуки, которые RTK Query автоматически генерирует
-export const { useGetCategoriesQuery, useGetCategoryBySlugQuery } = categoriesApi;
+export const { useGetCategoriesQuery, useGetCategoryBySlugQuery, useGetProductByIdQuery } = categoriesApi;

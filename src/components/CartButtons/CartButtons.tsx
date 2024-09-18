@@ -11,7 +11,7 @@ interface CartButtonsProps {
 
 const CartButtons: React.FC<CartButtonsProps> = ({ product }) => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
   
     const handleAddToCart = () => {
       dispatch(addOrUpdateItem({ id: product.id, item: product, quantity: 1 }));
