@@ -15,6 +15,7 @@ const CartButtons: React.FC<CartButtonsProps> = ({ product }) => {
   
     const handleAddToCart = () => {
       dispatch(addOrUpdateItem({ id: product.id, item: product, quantity: 1 }));
+            
     };
   
     const handleOrderNow = () => {

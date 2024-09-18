@@ -7,5 +7,6 @@ export default interface Product {
     sku: string;
     description?: string;
     images: string[];
+    categoryslug: string;
 }
 

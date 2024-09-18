@@ -9,7 +9,7 @@ interface ProductCardProps {
     to: string
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, to }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, to }) => {    
 
     return (
         <div className="product-card">
@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, to }) => {
                     <div className="product-card-price">{ product.price }₽</div>
                 </div>                
             </Link>            
-            <CartButtons product={product}/>
+            <CartButtons product={ product }/>
         </div>
         
     )

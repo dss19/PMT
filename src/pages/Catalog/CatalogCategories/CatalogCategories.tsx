@@ -4,7 +4,7 @@ import ICategory from '../../../models/ICaterogy';
 import { Link } from 'react-router-dom';
 
 
-const CatalogCategories: React.FC<{ category: ICategory }> = React.memo(({ category }) => {     
+const CatalogCategories: React.FC<{ category: ICategory }> = React.memo(({ category }) => {    
         
     return (
         <Link to={ `/catalog/${category.slug}` } className="catalog-categories">
