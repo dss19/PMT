@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store'; 
 import { clearCart } from '../../../store/reducers/CartSlice';
 import CartItem from '../CartItem/CartItem';
+import OrderForm from '../CartForm/CartForm'; // Импортируем компонент формы
 import { Link } from 'react-router-dom';
 import './cart-inner.css';
 
@@ -25,6 +26,13 @@ const CartInner: React.FC = () => {
     );
   }
 
+  // Подготавливаем данные для формы заказа, исключая id товаров
+  const orderItems = items.map(item => ({
+    name: item.name,
+    quantity: item.quantity,
+    price: item.price,
+  }));
+
   return (
     <div className="cart-list">
       <div className="cart-items">
@@ -37,6 +45,9 @@ const CartInner: React.FC = () => {
         <div className="cart-summary-text">На сумму: <span>{totalPrice}₽</span></div>
         <button onClick={handleClearCart}>Очистить корзину</button>
       </div>
+
+      {/* Передаем данные без id товаров */}
+      <OrderForm items={orderItems} totalPrice={totalPrice} />
     </div>
   );
 };

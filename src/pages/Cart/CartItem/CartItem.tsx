@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, addOrUpdateItem } from '../../../store/reducers/CartSlice';
+import { incrementItemQuantity, decrementItemQuantity, removeItemFromCart } from '../../../store/reducers/CartSlice';
 import IProduct from '../../../models/IProduct'; 
 import { Link } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../../api/categoriesApi';
@@ -15,13 +15,17 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   // Используем хук для получения данных продукта
   const { data: product, error } = useGetProductByIdQuery(item.id);
 
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart({ id: item.id, quantity: item.quantity }));
+  const handleIncrement = (id: string) => {
+    dispatch(incrementItemQuantity(id)); // Увеличиваем количество
   };
-
-  const handleIncreaseQuantity = () => {
-    dispatch(addOrUpdateItem({ id: item.id, item, quantity: item.quantity + 1 }));
-  };  
+  
+  const handleDecrement = (id: string) => {
+    dispatch(decrementItemQuantity(id)); // Уменьшаем количество
+  };
+  
+  const handleRemove = (id: string) => {
+    dispatch(removeItemFromCart(id)); // Удаляем товар
+  };
 
   if (error || !product) return <div>Ошибка загрузки товара</div>;
 
@@ -38,12 +42,12 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
         <div className="cart-item-price">Цена: <span>{item.price}₽</span></div>
         <div className="cart-item-quantity">
           <span>Количество:</span>
-          <button onClick={handleRemoveFromCart} className="cart-item-quantity-btn">-</button>
+          <button onClick={() => handleDecrement(item.id)} className="cart-item-quantity-btn">-</button>
           <div className="cart-item-quantity-value">{item.quantity}</div>
-          <button onClick={handleIncreaseQuantity} className="cart-item-quantity-btn">+</button>
+          <button onClick={() => handleIncrement(item.id)} className="cart-item-quantity-btn">+</button>
         </div>
         <div className="cart-item-price-total">Итого: <span>{item.price * item.quantity}₽</span></div>
-        <button className="cart-item-remove" onClick={handleRemoveFromCart}>Удалить из заказа</button>
+        <button className="cart-item-remove" onClick={() => handleRemove(item.id)}>Удалить из заказа</button>
       </div>
     </div>
   );

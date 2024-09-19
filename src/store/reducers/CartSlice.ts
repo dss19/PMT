@@ -24,6 +24,7 @@ const initialState: CartState = {
   totalPrice: JSON.parse(localStorage.getItem('totalPrice') || '0'),
 };
 
+// Функция для сохранения состояния корзины в localStorage
 const saveToLocalStorage = (state: CartState) => {
   localStorage.setItem('cartItems', JSON.stringify(state.items));
   localStorage.setItem('totalQuantity', JSON.stringify(state.totalQuantity));
@@ -34,43 +35,65 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addOrUpdateItem(state, action: PayloadAction<{ id: string; item: CartItem; quantity: number }>) {
-      const { id, item, quantity } = action.payload;
-      const existingItem = state.items.find((cartItem) => cartItem.id === id);      
+    // 1. Добавление товара в корзину (или обновление, если уже есть)
+    addItemToCart(state, action: PayloadAction<CartItem>) {
+      const existingItem = state.items.find((item) => item.id === action.payload.id);
+      if (existingItem) {
+        existingItem.quantity += action.payload.quantity; // Обновляем количество
+      } else {
+        state.items.push({ ...action.payload, quantity: action.payload.quantity }); // Добавляем новый товар
+      }
 
+      state.totalQuantity += action.payload.quantity;
+      state.totalPrice = state.items.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+
+      saveToLocalStorage(state);
+    },
+
+    // 2. Инкремент количества товара в корзине
+    incrementItemQuantity(state, action: PayloadAction<string>) {
+      const existingItem = state.items.find((item) => item.id === action.payload);
       if (existingItem) {
         existingItem.quantity += 1;
-      } else {
-        state.items.push({ ...item, quantity });
+        state.totalQuantity += 1;
+        state.totalPrice += existingItem.price;
       }
 
-      state.totalQuantity += 1;
-      state.totalPrice = state.items.reduce(
-        (total, cartItem) => total + cartItem.price * cartItem.quantity,
-        0
-      );
       saveToLocalStorage(state);
     },
-    removeFromCart(state, action: PayloadAction<{ id: string; quantity?: number }>) {
-      const { id, quantity = 1 } = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
 
+    // 3. Декремент количества товара в корзине
+    decrementItemQuantity(state, action: PayloadAction<string>) {
+      const existingItem = state.items.find((item) => item.id === action.payload);
+      if (existingItem && existingItem.quantity > 1) {
+        existingItem.quantity -= 1;
+        state.totalQuantity -= 1;
+        state.totalPrice -= existingItem.price;
+      } else if (existingItem && existingItem.quantity === 1) {
+        state.items = state.items.filter((item) => item.id !== action.payload);
+        state.totalQuantity -= 1;
+        state.totalPrice -= existingItem.price;
+      }
+
+      saveToLocalStorage(state);
+    },
+
+    // 4. Удаление товара из корзины
+    removeItemFromCart(state, action: PayloadAction<string>) {
+      const existingItem = state.items.find((item) => item.id === action.payload);
       if (existingItem) {
-        if (existingItem.quantity > quantity) {
-          existingItem.quantity -= quantity;
-          state.totalQuantity -= quantity;
-        } else {
-          state.totalQuantity -= existingItem.quantity;
-          state.items = state.items.filter((item) => item.id !== id);
-        }
+        state.totalQuantity -= existingItem.quantity;
+        state.totalPrice -= existingItem.price * existingItem.quantity;
+        state.items = state.items.filter((item) => item.id !== action.payload);
       }
 
-      state.totalPrice = state.items.reduce(
-        (total, cartItem) => total + cartItem.price * cartItem.quantity,
-        0
-      );
       saveToLocalStorage(state);
     },
+
+    // 5. Полная очистка корзины
     clearCart(state) {
       state.items = [];
       state.totalQuantity = 0;
@@ -80,5 +103,12 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addOrUpdateItem, removeFromCart, clearCart } = cartSlice.actions;
+export const {
+  addItemToCart,
+  incrementItemQuantity,
+  decrementItemQuantity,
+  removeItemFromCart,
+  clearCart,
+} = cartSlice.actions;
+
 export default cartSlice.reducer;
