@@ -8,8 +8,10 @@ const CatalogCategories: React.FC<{ category: ICategory }> = React.memo(({ categ
         
     return (
         <Link to={ `/catalog/${category.slug}` } className="catalog-categories">
-            <h5 className="catalog-categories-name">{ category.name }</h5>  
-            <img className="catalog-categories-img" src={category.iconurl} alt={ category.name } />         
+            <div className="catalog-categories-inner">
+                <h5 className="catalog-categories-name">{ category.name }</h5>  
+                <img className="catalog-categories-img" src={category.iconurl} alt={ category.name } />
+            </div>                     
         </Link>
     );
 });

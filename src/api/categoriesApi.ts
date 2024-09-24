@@ -4,7 +4,7 @@ import IProduct from '../models/IProduct';
 
 export const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }), // Убедись, что URL корректен
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://192.168.1.150:4000/' }), // Убедись, что URL корректен
   endpoints: (builder) => ({
     getCategories: builder.query<ICategory[], void>({
       query: () => 'categories',
