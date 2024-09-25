@@ -76,17 +76,11 @@
 }
 
 @media screen and (max-width: 576px) {
-    .category-filter-list {
-        display: block;
+    .category-filter {
+        padding: 30px 0;
     }
     .category-filter-ttl {
         margin-bottom: 20px;
-    }
-    .category-filter-item {
-        line-height: 1.7;
-        font-size: 18px;
-        display: inline-block;
-        margin-right: 70px;
     }
     .product-list-grid {
         padding: 0 16px;
