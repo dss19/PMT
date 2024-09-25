@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { clearCart } from '../../../store/reducers/CartSlice'; // Экшен для очистки корзины
 import { useSubmitOrderMutation } from '../../../api/ordersApi'; // Используем хук RTK Query
+import './cart-form.css';
 
 
 // Описываем пропсы для товаров и общей суммы (без id)
@@ -42,17 +43,14 @@ const OrderForm: React.FC<OrderFormProps> = ({ items, totalPrice }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input value={name} name='name' type='text' onChange={(e) => setName(e.target.value)} placeholder='Ваше имя' required />
+    <form className="cart-form" onSubmit={handleSubmit}>
+      {/* <div className="cart-form-ttl">Заполните форму:</div> */}
+      <div className="cart-form-grid">
+        <input className="cart-form-input" value={name} name='name' type='text' onChange={(e) => setName(e.target.value)} placeholder='Ваше имя' required />
+        <input className="cart-form-input" value={phone} name='phone' type='tel' onChange={(e) => setPhone(e.target.value)} placeholder='Телефон' required />
+        <input className="cart-form-input" value={email} name='email' type='email' onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
+        <button className="cart-form-submit" type="submit" disabled={isLoading}>Отправить заказ</button>
       </div>
-      <div>
-        <input value={phone} name='phone' type='tel' onChange={(e) => setPhone(e.target.value)} placeholder='Телефон' required />        
-      </div>
-      <div>
-        <input value={email} name='email' type='email' onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
-      </div>
-      <button type="submit" disabled={isLoading}>Отправить заказ</button>
 
       {isLoading && <p>Отправка...</p>}
       {isSuccess && <p>Заказ успешно отправлен!</p>}

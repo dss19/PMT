@@ -43,7 +43,7 @@ const CartInner: React.FC = () => {
       <div className="cart-summary">
         <div className="cart-summary-text">Всего товаров: <span>{totalQuantity}</span></div>
         <div className="cart-summary-text">На сумму: <span>{totalPrice}₽</span></div>
-        <button onClick={handleClearCart}>Очистить корзину</button>
+        <button className='cart-summary-clear' onClick={handleClearCart}>Очистить корзину</button>
       </div>
 
       {/* Передаем данные без id товаров */}
