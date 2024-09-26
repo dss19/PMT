@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@fancyapps/ui": "^5.0.36",
     "@types/react-input-mask": "^3.0.5",
     "@types/react-transition-group": "^4.4.11",
     "@types/uuid": "^10.0.0",

@@ -15,7 +15,9 @@ const ProductPage: React.FC = () => {
                 </Container>                
             </Section>
             <Section>                
-                <ProductPageInner />                               
+                <Container>
+                    <ProductPageInner /> 
+                </Container>                  
             </Section>
         </main>
     );

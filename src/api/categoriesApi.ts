@@ -15,8 +15,15 @@ export const categoriesApi = createApi({
     getProductById: builder.query<IProduct, string>({
       query: (id) => `products/${id}`,
     }),
+    getProductBySlug: builder.query<IProduct, string>({
+      query: (slug) => `products/slug/${slug}`,
+    }),
   }),
 });
 
 // Экспортируем хуки, которые RTK Query автоматически генерирует
-export const { useGetCategoriesQuery, useGetCategoryBySlugQuery, useGetProductByIdQuery } = categoriesApi;
+export const { 
+  useGetCategoriesQuery, 
+  useGetCategoryBySlugQuery, 
+  useGetProductByIdQuery,
+  useGetProductBySlugQuery } = categoriesApi;
