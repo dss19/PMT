@@ -8,7 +8,7 @@ const ProductPage: React.FC = () => {
     
 
     return (
-        <main id='page-category' className='main'>
+        <main id='page-product' className='main'>
             <Section>
                 <Container>
                     <Breadcrumbs />
