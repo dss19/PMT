@@ -20,25 +20,20 @@ const ProductPageInner: React.FC = () => {
     );
   }
 
-  const { name, description, price, sku, quantity, images } = product;
-  console.log(description);
-  
+  const { name, description, price, sku, quantity, images } = product;  
 
   return (
     <div className="product-page">
       <div className="product-page-content">
-        {/* Проверка на наличие нескольких изображений для рендера галереи */}
-        {images && images.length > 1 ? (
-          <ProductGallery images={images} name={name} />
-        ) : (
-          // Если одно изображение, показываем его без галереи
-          <img src={images[0]} alt={name} className="product-page-img" />
-        )}
+        {images && images.length > 1 
+          ? <ProductGallery images={images} name={name} />
+          : <img src={images[0]} alt={name} className="product-page-img" />
+        }
         <div className="product-info">
-          <h1>{name}</h1>          
-          <p>Цена: {price} руб.</p>
-          <p>Артикул: {sku}</p>
-          <p>Количество на складе: {quantity}</p>
+          <h5 className='product-name'>{name}</h5>
+          <div className="product-sku">Артикул: {sku}</div>          
+          <div className='product-price'>Цена: {price}₽</div>
+          <p>Количество: {quantity}шт.</p>
           <CartButtons product={product}/>
         </div>
         {description && <p>{description}</p>}
