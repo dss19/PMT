@@ -20,7 +20,7 @@ const ProductPageInner: React.FC = () => {
     );
   }
 
-  const { name, description, price, sku, quantity, images } = product;  
+  const { name, description, price, sku, images } = product;  
 
   return (
     <div className="product-page">
@@ -33,10 +33,15 @@ const ProductPageInner: React.FC = () => {
           <h5 className='product-name'>{name}</h5>
           <div className="product-sku">Артикул: {sku}</div>          
           <div className='product-price'>Цена: {price}₽</div>
-          <p>Количество: {quantity}шт.</p>
+          {/* <p>Количество: {quantity}шт.</p> */}
           <CartButtons product={product}/>
         </div>
-        {description && <p>{description}</p>}
+        {description && 
+          <div className='product-desc'>
+            <p className='product-desc-ttl'>Описание</p>
+            <p className='product-desc-text'>{description}</p>
+          </div>
+        }
       </div>
     </div>
   );

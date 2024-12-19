@@ -28,3 +28,66 @@
     color: #000000;
     margin-bottom: 16px;
 }
+
+.product-page .cart-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.product-page .cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 24px;
+}
+
+.product-page .cart-btn-add {
+    background-color: var(--main);
+    margin-right: 10px;
+}
+
+.product-page .cart-btn-order {
+    background-color: var(--orange);
+}
+
+.product-desc {
+    grid-column: span 2;
+}
+
+.product-desc-ttl {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.product-desc-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+@media screen and (max-width: 991px) {
+    .product-page-content {
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
+    }  
+    .product-desc {
+        grid-column: span 1;
+    }
+}    
+
+@media screen and (max-width: 575px) {
+    .product-name {
+        font-size: 22px;
+        font-weight: 700;
+    }
+    
+}

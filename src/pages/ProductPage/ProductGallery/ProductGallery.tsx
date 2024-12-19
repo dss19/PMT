@@ -21,7 +21,7 @@ const ProductGallery: React.FC<{ images: string[], name: string }> = ({ images, 
                         dragFree: false,
                         slidesPerPage: 'auto',
                         Navigation: true,
-                        axis: 'x',
+                        axis: 'y',
                         breakpoints: {
                             '(min-width: 768px)': {
                                 axis: 'y',

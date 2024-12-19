@@ -131,9 +131,35 @@
     --f-button-prev-pos: 0;
 }
 
-
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1400px) {
     #productContainer {
-        display: block;
+        --product-view-height: 365px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #productContainer {
+        --product-view-height: 400px;
+        justify-content: flex-end;
+    }
+
+    #productCarousel{
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #productContainer {
+        --product-view-height: 268px;
+        justify-content: flex-end;
+    }
+
+    .f-thumbs.is-classic {
+        --f-thumb-width: 60px;
+        --f-thumb-height: 60px;
+    }
+
+    #productCarousel{
+        max-width: 268px;
     }
 }
