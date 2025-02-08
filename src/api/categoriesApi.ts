@@ -13,10 +13,13 @@ export const categoriesApi = createApi({
       query: (slug) => `categories/${slug}`,
     }),
     getProductById: builder.query<IProduct, string>({
-      query: (id) => `products/${id}`,
+      query: (id) => `products/id/${id}`,
     }),
     getProductBySlug: builder.query<IProduct, string>({
       query: (slug) => `products/slug/${slug}`,
+    }),
+    getSearchProducts: builder.query<IProduct[], string>({
+      query: (searchTerm) => `products/search?query=${encodeURIComponent(searchTerm)}`,
     }),
   }),
 });
@@ -26,4 +29,5 @@ export const {
   useGetCategoriesQuery, 
   useGetCategoryBySlugQuery, 
   useGetProductByIdQuery,
+  useGetSearchProductsQuery,
   useGetProductBySlugQuery } = categoriesApi;
