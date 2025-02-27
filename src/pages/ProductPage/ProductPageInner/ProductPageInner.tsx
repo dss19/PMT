@@ -32,7 +32,7 @@ const ProductPageInner: React.FC = () => {
         <div className="product-info">
           <h5 className='product-name'>{name}</h5>
           <div className="product-sku">Артикул: {sku}</div>          
-          <div className='product-price'>Цена: {price}₽</div>
+          <div className='product-price'>Цена: {price}₽ <span>(без НДС)</span></div>
           {/* <p>Количество: {quantity}шт.</p> */}
           <CartButtons product={product}/>
         </div>

@@ -29,6 +29,11 @@
     margin-bottom: 16px;
 }
 
+.product-price span {
+    font-size: 12px;
+    color: #6f6f6f;
+}
+
 .product-page .cart-buttons {
     display: flex;
     align-items: center;

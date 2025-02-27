@@ -18,7 +18,7 @@ const FooterSocial: React.FC = () => {
                     </svg>
                 </a>
             </div>
-            <span className="footer-copyrights">© 2024 ООО «Пневмоторг»</span>
+            <span className="footer-copyrights">© 2025 ООО «Пневмоторг»</span>
         </div>
     )
 }
