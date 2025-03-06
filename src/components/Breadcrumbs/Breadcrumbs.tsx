@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './breadcrumbs.css';
+import React, { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useGetCategoriesQuery, useGetProductBySlugQuery } from '../../api/categoriesApi';
+import "./breadcrumbs.css";
 
 const breadcrumbMap: Record<string, string> = {
     '/': 'Главная',
@@ -12,91 +13,60 @@ const breadcrumbMap: Record<string, string> = {
     '/cart': 'Корзина'
 };
 
-interface Category {
-    id: string;
-    name: string;
-    slug: string;
-    subCategories: SubCategory[];
-}
-
-interface SubCategory {
-    id: string;
-    name: string;
-    slug: string;
-    products: Product[];
-}
-
-interface Product {
-    id: string;
-    name: string;
-    slug: string;
-}
-
 const BreadCrumbs: React.FC = () => {
     const location = useLocation();
-    const [categories, setCategories] = useState<Category[]>([]);
-
-    // Получение данных из JSON
-    useEffect(() => {
-        fetch('/data/categories.json')
-            .then((response) => response.json())
-            .then((data) => setCategories(data))
-            .catch((error) => console.error('Ошибка загрузки данных:', error));
-    }, []);
-
+    const { data: categories = [] } = useGetCategoriesQuery();
+    
     const pathArray = location.pathname.split('/').filter(Boolean);
+    const productSlug = pathArray[pathArray.length - 1];
 
-    const generateBreadcrumb = (pathArray: string[]) => {
+    const { data: product } = useGetProductBySlugQuery(productSlug, {
+        skip: pathArray.length < 3,
+    });
+
+    const generateBreadcrumb = useMemo(() => {
         let path = '';
         return pathArray.map((part, index) => {
             path += `/${part}`;
             const isLast = index === pathArray.length - 1;
 
-            // Проверка для статических страниц
-            if (breadcrumbMap[`/${part}`]) {
-                return !isLast ? (
-                    <React.Fragment key={index}>
-                        <Link to={path}>{breadcrumbMap[`/${part}`]}</Link>&nbsp;—&nbsp;
-                    </React.Fragment>
-                ) : (
-                    breadcrumbMap[`/${part}`]
-                );
-            }
+            let name = breadcrumbMap[path] || decodeURIComponent(part);
+            let linkPath = path;
 
-            // Поиск для динамических страниц (категории и товары)
-            let name = decodeURIComponent(part);
+            // Проверка категорий
             const category = categories.find(cat => cat.slug === part);
             if (category) {
                 name = category.name;
-            } else {
-                categories.forEach(cat => {
-                    const subCategory = cat.subCategories.find(sub => sub.slug === part);
-                    if (subCategory) {
-                        name = subCategory.name;
-                    } else {
-                        cat.subCategories.forEach(sub => {
-                            const product = sub.products.find(prod => prod.slug === part);
-                            if (product) {
-                                name = product.name;
-                            }
-                        });
-                    }
-                });
+                linkPath = `/catalog/${category.slug}`;
             }
 
-            return !isLast ? (
+            // Проверка подкатегорий
+            const parentCategory = categories.find(cat => cat.subcategories.some(sub => sub.slug === part));
+            const matchedSubCategory = parentCategory?.subcategories.find(sub => sub.slug === part);
+
+            if (matchedSubCategory) {
+                name = matchedSubCategory.name;
+                linkPath = `/catalog/${parentCategory!.slug}/${matchedSubCategory.slug}`;
+            }
+
+            // Проверка товара
+            if (product && product.slug === part) {
+                name = product.name;
+                linkPath = `/catalog/${product.categoryslug}/${product.slug}`;
+            }
+
+            return (
                 <React.Fragment key={index}>
-                    <Link className="breadcrumbs-link" to={path}>{name}</Link>&nbsp;—&nbsp;
+                    {!isLast ? <Link to={linkPath}>{name}</Link> : <span>{name}</span>}
+                    {!isLast && <span>&nbsp;—&nbsp;</span>}
                 </React.Fragment>
-            ) : (
-                name
             );
         });
-    };
+    }, [categories, product, pathArray]);
 
     return (
         <div className="breadcrumbs">
-            <Link className="breadcrumbs-link" to="/">Главная</Link>&nbsp;—&nbsp;{generateBreadcrumb(pathArray)}
+            <Link to="/">Главная</Link>&nbsp;—&nbsp;{generateBreadcrumb}
         </div>
     );
 };
