@@ -1,6 +1,7 @@
 {
-  "short_name": "PMT",
-  "name": "PMT",
+  "name": "Пневмоторг",
+  "short_name": "Пневмоторг",
+  "description": "Широкий ассортимент пневмооборудования и комплектующих. Доставка по всей России.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,7 +14,7 @@
       "sizes": "288x288"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
