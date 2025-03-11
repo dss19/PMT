@@ -19,8 +19,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, to }) => {
                 </div>
                 <div className="product-card-name">{ product.name }</div>
                 <div className="product-card-info">
-                    <div className="product-card-sku">{ product.sku }</div>
                     <div className="product-card-price">{ product.price }₽</div>
+                    <div className="product-card-sku">{ product.sku }</div>
                 </div>                
             </Link>            
             <CartButtons product={ product }/>
