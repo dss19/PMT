@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 
-.news-item-wrap {    
+.news-item-wrap {
     display: flex;
 }
 
@@ -39,6 +39,8 @@
 .news-item-text {
     line-height: 1.2;
     margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1.2;
 }
 
 .news-item-text.hidden {
@@ -76,6 +78,7 @@
     .news-item-info {
         margin-bottom: 20px;
     }
+
     .news-item-img {
         width: 100%;
         max-width: none;
@@ -86,4 +89,9 @@
     .news-item-img img {
         width: 100%;
     }
+
+    .news-item-text {
+        font-size: 16px;
+    }
+
 }

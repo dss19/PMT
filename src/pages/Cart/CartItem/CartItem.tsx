@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { incrementItemQuantity, decrementItemQuantity, removeItemFromCart } from '../../../store/reducers/CartSlice';
-import IProduct from '../../../models/IProduct'; 
+import IProduct from '../../../models/IProduct';
 import { Link } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../../api/categoriesApi';
 
@@ -11,18 +11,18 @@ interface CartItemProps {
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const dispatch = useDispatch();
-  
+
   // Используем хук для получения данных продукта
   const { data: product, error } = useGetProductByIdQuery(item.id);
 
   const handleIncrement = (id: string) => {
     dispatch(incrementItemQuantity(id)); // Увеличиваем количество
   };
-  
+
   const handleDecrement = (id: string) => {
     dispatch(decrementItemQuantity(id)); // Уменьшаем количество
   };
-  
+
   const handleRemove = (id: string) => {
     dispatch(removeItemFromCart(id)); // Удаляем товар
   };
@@ -40,7 +40,6 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
         <Link to={`/catalog/${product.categoryslug}/${item.slug}`} className="cart-item-name">
           {item.name}
         </Link>
-        <div className="cart-item-sku">Артикул: {item.sku}</div>
         <div className="cart-item-price">Цена: <span>{item.price}₽</span></div>
         <div className="cart-item-quantity">
           <span>Количество:</span>
