@@ -18,7 +18,6 @@ const NewsItem: React.FC<NewsProps> = ({ news }) => {
                     <div className="news-item-date">{ news.date }</div>
                     <div className="news-item-ttl">{ news.title }</div>
                     <div className="news-item-text">{ news.text }</div>
-                    <div className="news-item-more">Подробнее</div>
                 </div>
             </div>
         </li>
