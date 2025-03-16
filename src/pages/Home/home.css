@@ -1,6 +1,9 @@
 .home-banner {
     position: relative;
 }
+.home-banner img {
+    width: 100%;
+}
 .home-banner-ttl {
     position: absolute;
     top: 120px;
