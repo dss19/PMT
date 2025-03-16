@@ -46,7 +46,7 @@
 
     .catalog-categories:hover .catalog-categories-name {
         /* font-size: 26px; */
-        transform: scale(1.2);
+        transform: scale(1.1);
         color: var(--orange);
     }
 
