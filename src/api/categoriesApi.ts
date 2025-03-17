@@ -4,7 +4,7 @@ import IProduct from '../models/IProduct';
 
 export const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://45.139.78.136:3000/' }), // Убедись, что URL корректен
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://api.pnevmo-torg.ru/' }), // Убедись, что URL корректен
   endpoints: (builder) => ({
     getCategories: builder.query<ICategory[], void>({
       query: () => 'categories',
@@ -25,9 +25,9 @@ export const categoriesApi = createApi({
 });
 
 // Экспортируем хуки, которые RTK Query автоматически генерирует
-export const { 
-  useGetCategoriesQuery, 
-  useGetCategoryBySlugQuery, 
+export const {
+  useGetCategoriesQuery,
+  useGetCategoryBySlugQuery,
   useGetProductByIdQuery,
   useGetSearchProductsQuery,
   useGetProductBySlugQuery } = categoriesApi;
