@@ -3,14 +3,23 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // Создаем API с помощью RTK Query
 export const ordersApi = createApi({
   reducerPath: 'ordersApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/' }), // Укажите ваш базовый URL
+  baseQuery: fetchBaseQuery({ // Укажите ваш базовый URL
+    baseUrl: '/',
+    prepareHeaders: (headers) => {
+      headers.set('Content-Type', 'application/json');
+      return headers;
+    }
+  }),
   endpoints: (builder) => ({
     // Определяем mutation для отправки заказа
     submitOrder: builder.mutation({
       query: (orderData) => ({
-        url: 'order.php', // PHP-скрипт, который обрабатывает заказ
+        url: 'order.php',
         method: 'POST',
-        body: orderData, // Отправляем данные заказа
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData), // Преобразуем в JSON
       }),
     }),
   }),
