@@ -19,7 +19,7 @@ const PaymentContent: React.FC = () => {
                 <h4 className="payment-subttl">Бесплатно</h4>
                 <ul className="payment-list">
                     <li className="payment-delivery">Самовывоз со склада в Пензе, ул. Гражданская 20</li>
-                    <li className="payment-delivery">Доставка до терминалов тренспортных компаний в Пензе <span>при заказе на сумму свыше 10000 р.</span></li>
+                    <li className="payment-delivery">Доставка до терминалов транспортных компаний в Пензе <span>при заказе на сумму свыше 10000 р.</span></li>
                     <li className="payment-delivery">Возможна доставка транспортной компанией до Вашего склада или терминала в Вашем городе за наш счет <span>(обсуждается индивидуально)</span>.</li>
                 </ul>
                 <h4 className="payment-subttl">Оплачивается покупателем</h4>

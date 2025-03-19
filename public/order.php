@@ -1,10 +1,10 @@
 <?php
 
 // Вставляем токен, который прислал @botFather
-$token = "ВАШ_ТОКЕН_ТЕЛЕГРАМ_БОТА";
+$token = "8079242355:AAFzE6W0ELX61t8Bo7FMDOZIaHbv6PRoqU4";
 
 // Указываем chat_id, куда будет отправлено сообщение
-$chat_id = "ВАШ_CHAT_ID";
+$chat_id = "-1002634755067";
 
 // Получаем данные из POST-запроса
 $data = json_decode(file_get_contents("php://input"), true);
@@ -38,7 +38,7 @@ foreach ($cartItems as $item) {
     $itemQuantity = $item['quantity'];
     $itemPrice = $item['price'];
 
-    $arr['Товары:'] .= "\n- Товар: $itemName, Количество: $itemQuantity, Цена: $itemPrice ₽";
+    $arr['Товары:'] .= "$itemName, Количество: $itemQuantity, Цена: $itemPrice ₽";
 }
 
 $arr['Общая сумма'] = $totalPrice . ' ₽';
