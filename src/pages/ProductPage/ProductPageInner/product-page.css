@@ -1,6 +1,7 @@
 .product-page {
     padding: 40px 0;
 }
+
 .product-page-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -37,6 +38,7 @@
 .product-page .cart-buttons {
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
 }
 
 .product-page .cart-btn {
@@ -62,6 +64,18 @@
     background-color: var(--orange);
 }
 
+.product-params-ttl {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.product-params-data {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
 .product-desc {
     grid-column: span 2;
 }
@@ -83,16 +97,17 @@
         grid-row-gap: 20px;
         grid-column-gap: 20px;
         grid-template-columns: repeat(1, 1fr);
-    }  
+    }
+
     .product-desc {
         grid-column: span 1;
     }
-}    
+}
 
 @media screen and (max-width: 575px) {
     .product-name {
         font-size: 22px;
         font-weight: 700;
     }
-    
+
 }

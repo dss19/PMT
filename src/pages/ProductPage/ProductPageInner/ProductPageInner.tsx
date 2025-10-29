@@ -20,7 +20,7 @@ const ProductPageInner: React.FC = () => {
     );
   }
 
-  const { name, description, price, images } = product;
+  const { name, description, price, images, parameters } = product;
 
   return (
     <div className="product-page">
@@ -33,6 +33,16 @@ const ProductPageInner: React.FC = () => {
           <h5 className='product-name'>{name}</h5>
           <div className='product-price'>Цена: {price}₽ <span>(без НДС)</span></div>
           <CartButtons product={product} />
+          {parameters && parameters.length > 0 ? (
+            <div className="product-params">
+              <h5 className='product-params-ttl'>Характеристики:</h5>
+              {parameters.map((param, index) => (
+                <div key={index} className="product-params-data">
+                  {param}
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
         {description &&
           <div className='product-desc'>

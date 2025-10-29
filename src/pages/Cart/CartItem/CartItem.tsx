@@ -27,6 +27,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
     dispatch(removeItemFromCart(id)); // Удаляем товар
   };
 
+
   if (error || !product) return <div>Ошибка загрузки товара</div>;
 
   return (

@@ -24,6 +24,9 @@ const ProductPage: React.FC = () => {
         url: `https://pnevmo-torg.ru/catalog/${product?.categoryslug}/${product?.slug}`,
     });
 
+    console.log(product);
+
+
     return (
         <main id='page-product' className='main'>
             <SEO title={seoData.title} meta={seoData.meta} />
