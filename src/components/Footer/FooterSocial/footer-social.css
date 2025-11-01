@@ -6,7 +6,7 @@
 }
 
 .footer-social-icons {
-    display: flex;
+    display: none;
 }
 
 .footer-social-link {
@@ -35,6 +35,7 @@
         align-items: flex-start;
         margin: 16px 0 0px;
     }
+
     .footer-social-icons {
         margin-bottom: 16px;
     }
