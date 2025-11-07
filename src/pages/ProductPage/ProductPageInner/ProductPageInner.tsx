@@ -21,7 +21,7 @@ const ProductPageInner: React.FC = () => {
     );
   }
 
-  const { name, description, price, images, parameters, brand, country } = product;
+  const { name, description, price, images, parameters, brand, country, benefits } = product;
 
   return (
     <div className="product-page">
@@ -64,6 +64,18 @@ const ProductPageInner: React.FC = () => {
               <span className='product-made-text'>{`${country[1]} - страна производства`}</span>
             </div>
           }
+          <div className="product-benefits">
+            <h4 className="product-benefits-ttl">Преимущества:</h4>
+            {benefits &&
+              benefits.map((item, index) => (
+                <div key={index} className="product-benefits-row">{item}</div>
+              ))
+            }
+            <div className="product-garanty">
+              <img src="/images/done.png" alt="гарантия" className="product-garanty-img" />
+              <span className="product-garanty-text">Гарантия 6 месяцев</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

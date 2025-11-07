@@ -11,5 +11,6 @@ export default interface Product {
     parameters?: string[];
     brand?: string[];
     country?: string[];
+    benefits?: string[];
 }
 
