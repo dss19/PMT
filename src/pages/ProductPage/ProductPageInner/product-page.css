@@ -77,7 +77,7 @@
 }
 
 .product-desc {
-    grid-column: span 2;
+    line-height: 1.25;
 }
 
 .product-desc-ttl {
@@ -89,6 +89,19 @@
 .product-desc-text {
     font-size: 18px;
     font-weight: 500;
+}
+
+.product-made-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.product-made-img {
+    margin-right: 6px;
+    border: 1px solid #dadcde;
+    border-radius: 4px;
 }
 
 

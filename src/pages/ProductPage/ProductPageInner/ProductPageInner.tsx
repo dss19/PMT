@@ -5,6 +5,7 @@ import ProductGallery from '../ProductGallery/ProductGallery';
 import './product-page.css';
 import CartButtons from '../../../components/CartButtons/CartButtons';
 
+
 const ProductPageInner: React.FC = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
   const { data: product, isLoading, isError } = useGetProductBySlugQuery(productSlug || '');
@@ -20,7 +21,7 @@ const ProductPageInner: React.FC = () => {
     );
   }
 
-  const { name, description, price, images, parameters } = product;
+  const { name, description, price, images, parameters, brand, country } = product;
 
   return (
     <div className="product-page">
@@ -50,6 +51,20 @@ const ProductPageInner: React.FC = () => {
             <p className='product-desc-text'>{description}</p>
           </div>
         }
+        <div className="product-made">
+          {brand &&
+            <div className="product-made-brand">
+              <img className="product-made-img" src={`/images/flags/${brand[0]}.jpg`} alt={brand[1]} />
+              <span className='product-made-text'>{`${brand[1]} - родина бренда`}</span>
+            </div>
+          }
+          {country &&
+            <div className="product-made-brand">
+              <img className="product-made-img" src={`/images/flags/${country[0]}.jpg`} alt={country[1]} />
+              <span className='product-made-text'>{`${country[1]} - страна производства`}</span>
+            </div>
+          }
+        </div>
       </div>
     </div>
   );

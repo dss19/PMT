@@ -9,5 +9,7 @@ export default interface Product {
     images: string[];
     categoryslug: string;
     parameters?: string[];
+    brand?: string[];
+    country?: string[];
 }
 
