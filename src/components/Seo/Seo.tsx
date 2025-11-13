@@ -6,6 +6,7 @@ interface MetaTag {
     name?: string;
     property?: string;
     content: string;
+    rel?: string;
 }
 
 interface SEOProps {
@@ -23,6 +24,9 @@ const SEO: React.FC<SEOProps> = ({ title, meta = [] }) => {
                 }
                 if (tag.property) {
                     return <meta key={index} property={tag.property} content={tag.content} />;
+                }
+                if (tag.rel) {
+                    return <link key={index} rel={tag.rel} content={tag.content} />;
                 }
                 return null;
             })}
