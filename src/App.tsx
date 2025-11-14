@@ -13,6 +13,7 @@ const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 const Cart = lazy(() => import('./pages/Cart/Cart'));
 const Category = lazy(() => import('./pages/Category/Category'));
 const ProductPage = lazy(() => import('./pages/ProductPage/ProductPage'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:slug" element={<Category />} />
           <Route path="/catalog/:categorySlug/:productSlug" element={<ProductPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Suspense>
