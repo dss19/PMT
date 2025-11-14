@@ -5,12 +5,14 @@ interface SeoOptions {
     keywords?: string;
     image?: string;
     url?: string;
+    robots: string;
 }
 
 export const getSeo = ({
     title,
     description = '',
     keywords = '',
+    robots = 'index, follow',
     image = '',
     url = '',
 }: SeoOptions) => ({
@@ -18,6 +20,7 @@ export const getSeo = ({
     meta: [
         { name: 'description', content: description },
         { name: 'keywords', content: keywords },
+        { name: 'robots', content: robots },
         { property: 'og:title', content: `${title} | Пневмоторг` },
         { property: 'og:description', content: description },
         { property: 'og:url', content: url },

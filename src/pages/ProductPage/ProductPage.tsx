@@ -22,6 +22,7 @@ const ProductPage: React.FC = () => {
         description: `${product?.description?.slice(0, 150).split(' ').slice(0, -1).join(' ')}...}` || `Купить ${product?.name} от ${product?.price} рублей с доставкой по РФ`,
         keywords: `${product?.name}, купить ${product?.name}, оптом, фото ${product?.name}, характеристики ${product?.name}`,
         url: `https://pnevmo-torg.ru/catalog/${product?.categoryslug}/${product?.slug}`,
+        robots: 'index, follow',
     });
 
     return (
