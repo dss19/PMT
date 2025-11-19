@@ -31,12 +31,12 @@ const ProductPageInner: React.FC = () => {
           : <img src={images[0]} alt={name} className="product-page-img" />
         }
         <div className="product-info">
-          <h5 className='product-name'>{name}</h5>
-          <div className='product-price'>Цена: {price}₽ <span>(без НДС)</span></div>
+          <h1 className='product-name'>{name}</h1>
+          <h2 className='product-price'>Цена: {price}₽ <span>(без НДС)</span></h2>
           <CartButtons product={product} />
           {parameters && parameters.length > 0 ? (
             <div className="product-params">
-              <h5 className='product-params-ttl'>Характеристики:</h5>
+              <h2 className='product-params-ttl'>Характеристики:</h2>
               {parameters.map((param, index) => (
                 <div key={index} className="product-params-data">
                   {param}
@@ -47,7 +47,7 @@ const ProductPageInner: React.FC = () => {
         </div>
         {description &&
           <div className='product-desc'>
-            <p className='product-desc-ttl'>Описание</p>
+            <h2 className='product-desc-ttl'>Описание</h2>
             <p className='product-desc-text'>{description}</p>
           </div>
         }
@@ -65,7 +65,7 @@ const ProductPageInner: React.FC = () => {
             </div>
           }
           <div className="product-benefits">
-            <h4 className="product-benefits-ttl">Преимущества:</h4>
+            <h2 className="product-benefits-ttl">Преимущества:</h2>
             {benefits &&
               benefits.map((item, index) => (
                 <div key={index} className="product-benefits-row">{item}</div>
@@ -73,7 +73,7 @@ const ProductPageInner: React.FC = () => {
             }
             <div className="product-garanty">
               <img src="/images/done.png" alt="гарантия" className="product-garanty-img" />
-              <span className="product-garanty-text">Гарантия 6 месяцев</span>
+              <h2 className="product-garanty-text">Гарантия 6 месяцев</h2>
             </div>
           </div>
         </div>

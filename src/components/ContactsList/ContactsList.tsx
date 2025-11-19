@@ -6,6 +6,7 @@ const ContactsList: React.FC = () => {
         <div className='contacts-list'>
             <a href="mailto:info@pnevmo-torg.ru" className="email">info@pnevmo-torg.ru</a>
             <a href="tel:+78005117128" className="phone">8-800-511-71-28</a>
+            <span className="footer-copyrights">© 2025 ООО «Пневмоторг»</span>
         </div>
     );
 };

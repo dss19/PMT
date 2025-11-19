@@ -2,7 +2,7 @@ import React from "react";
 import './footer.css';
 import Navigation from '../Navigation/Navigation';
 import ContactsList from "../ContactsList/ContactsList";
-import FooterSocial from "./FooterSocial/FooterSocial";
+import FooterLinks from "./FooterLinks/FooterLinks";
 import Container from "../Container/Container";
 
 const Footer: React.FC = () => {
@@ -12,10 +12,10 @@ const Footer: React.FC = () => {
             <Container>
                 <div className="footer-wrap">
                     <Navigation />
+                    <FooterLinks />
                     <ContactsList />
-                    <FooterSocial />
                 </div>
-            </Container>            
+            </Container>
         </footer>
     )
 }

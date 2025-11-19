@@ -1,0 +1,17 @@
+.footer-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links-item {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-links {
+        margin-top: 8px;
+    }
+}
