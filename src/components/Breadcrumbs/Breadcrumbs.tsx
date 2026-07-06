@@ -10,13 +10,14 @@ const breadcrumbMap: Record<string, string> = {
     '/payment': 'Оплата и доставка',
     '/contacts': 'Контакты',
     '/catalog': 'Каталог',
-    '/cart': 'Корзина'
+    '/cart': 'Корзина',
+    '/catlery': 'Импорт режущего инструмента'
 };
 
 const BreadCrumbs: React.FC = () => {
     const location = useLocation();
     const { data: categories = [] } = useGetCategoriesQuery();
-    
+
     const pathArray = location.pathname.split('/').filter(Boolean);
     const productSlug = pathArray[pathArray.length - 1];
 

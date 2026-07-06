@@ -11,7 +11,7 @@ const FooterLinks: React.FC = () => {
         <div className="footer-links">
             <Link to={`/catalog`} className="footer-links-item">Каталог</Link>
             {categories?.map((category) => (
-                <Link to={`/catalog/${category.slug}`} className="footer-links-item">{category.name}</Link>
+                <Link key={category.name} to={`/catalog/${category.slug}`} className="footer-links-item">{category.name}</Link>
             ))}
         </div>
     )

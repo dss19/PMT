@@ -14,6 +14,7 @@ const Cart = lazy(() => import('./pages/Cart/Cart'));
 const Category = lazy(() => import('./pages/Category/Category'));
 const ProductPage = lazy(() => import('./pages/ProductPage/ProductPage'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+const Catlery = lazy(() => import('./pages/Catlery/Catlery'));
 
 // Компонент для проверки существования динамических маршрутов
 // const RouteValidator: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -132,6 +133,7 @@ const App: React.FC = () => {
             <Route path="/catalog/:slug" element={<Category />} />
             <Route path="/catalog/:categorySlug/:productSlug" element={<ProductPage />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/catlery" element={<Catlery />} />
           </Routes>
           <Footer />
         </RouteValidator>

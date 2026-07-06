@@ -31,6 +31,19 @@ const ContactsInfo: React.FC = () => {
                 </svg>
                 <p className="contacts-worktime contacts-text">Пн-Пт, 9:30-17:00</p>
             </div>
+            <h3 className="contacts-ttl">Реквизиты:</h3>
+            <div className="contacts-block">
+                <p className="contacts-worktime contacts-text">Общество с ограниченной ответственностью "Пневмоторг"</p>
+            </div>
+            <div className="contacts-block">
+                <p className="contacts-worktime contacts-text">ИНН/КПП: 5835133440/772301001</p>
+            </div>
+            <div className="contacts-block">
+                <p className="contacts-worktime contacts-text">ОГРН: 1195835011360</p>
+            </div>
+            <div className="contacts-block">
+                <p className="contacts-worktime contacts-text">Юр. адрес: 109129, г.Москва, вн.тер.г. Муниципальный округ Текстильщики, ул. 8-я Текстильщиков, д.13, к.2, помещение 17/8П</p>
+            </div>
         </div>
     );
 };

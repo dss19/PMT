@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2022",
+    "ignoreDeprecations": "6.0",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
+    ],
+    "types": [
+      "webpack-env"
     ],
     "allowJs": true,
     "skipLibCheck": true,
