@@ -11,7 +11,7 @@ const breadcrumbMap: Record<string, string> = {
     '/contacts': 'Контакты',
     '/catalog': 'Каталог',
     '/cart': 'Корзина',
-    '/catlery': 'Импорт режущего инструмента'
+    '/catlery': 'Твердосплавный режущий инструмент'
 };
 
 const BreadCrumbs: React.FC = () => {

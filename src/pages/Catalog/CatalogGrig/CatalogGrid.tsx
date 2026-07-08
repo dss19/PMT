@@ -17,8 +17,8 @@ const CatalogGrid: React.FC = () => {
       ))}
       <Link to={`/catlery`} className="catalog-categories">
         <div className="catalog-categories-inner">
-          <h5 className="catalog-categories-name">{`Пластины`}</h5>
-          <img className="catalog-categories-img" src={`/images/category-icons/burs.svg`} alt={`Пластины`} />
+          <h5 className="catalog-categories-name">{`Пластины, державки, фрезы`}</h5>
+          <img className="catalog-categories-img" src={`/images/category-icons/XXXL.svg`} alt={`Пластины`} />
         </div>
       </Link>
     </div>
