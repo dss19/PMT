@@ -5,39 +5,43 @@
 }
 
 @font-face {
-    font-family: "Noah";
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 800;
     font-display: swap;
-    src: url(./assets/fonts/Noah-ExtraBold.woff2) format("woff2"), url(./assets/fonts/Noah-ExtraBold.woff) format("woff"), url(./assets/fonts/Noah-ExtraBold.ttf) format("truetype");
+    src: url(./assets/fonts/OpenSans-ExtraBold.ttf) format("truetype");
 }
+
 @font-face {
-    font-family: "Noah";
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(./assets/fonts/Noah-Bold.woff2) format("woff2"), url(./assets/fonts/Noah-Bold.woff) format("woff"), url(./assets/fonts/Noah-Bold.ttf) format("truetype");
+    src: url(./assets/fonts/OpenSans-Bold.ttf) format("truetype");
 }
+
 @font-face {
-    font-family: "Noah";
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(./assets/fonts/Noah-Medium.woff2) format("woff2"), url(./assets/fonts/Noah-Medium.woff) format("woff"), url(./assets/fonts/Noah-Medium.ttf) format("truetype");
+    src: url(./assets/fonts/OpenSans-Semibold.ttf) format("truetype");
 }
+
 @font-face {
-    font-family: "Noah";
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(./assets/fonts/Noah-Regular.woff2) format("woff2"), url(./assets/fonts/Noah-Regular.woff) format("woff"), url(./assets/fonts/Noah-Regular.ttf) format("truetype");
+    src: url(./assets/fonts/OpenSans-Regular.ttf) format("truetype");
 }
+
 @font-face {
-    font-family: "Noah";
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(./assets/fonts/Noah-Light.woff2) format("woff2"), url(./assets/fonts/Noah-Light.woff) format("woff"), url(./assets/fonts/Noah-Light.ttf) format("truetype");
+    src: url(./assets/fonts/OpenSans-Light.ttf) format("truetype");
 }
 
 * {
@@ -50,13 +54,14 @@
 body,
 #root {
     position: relative;
-    font-family: "Noah", sans-serif;
+    font-family: "Open Sans", sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
 }
 
@@ -64,11 +69,13 @@ a {
     text-decoration: none;
     display: inline-block;
 }
-img, svg {
+
+img,
+svg {
     display: block;
     max-width: 100%;
 }
 
 .d-none {
-    display: none!important;
+    display: none !important;
 }
